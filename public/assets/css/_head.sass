@@ -1,0 +1,54 @@
+.head
+  color: #fff
+  padding: 64px 0
+  text-align: center
+
+.head-logo
+  display: inline-block
+  margin-bottom: 90px
+
+.head-logo__anagram
+  +media-query(lap)
+    margin-right: 16px
+
+.head-logo__regina
+  +media-query(lap)
+    margin-left: 16px
+
+.head-title
+  +media-query(desk)
+    font-size: 64px
+    line-height: 1
+    margin-bottom: 54px
+
+.head-title__blue
+  color: #25d9f2
+
+.head-title__pink
+  color: #ff4a8a
+
+.head-next
+  margin-bottom: 54px
+
+.head-nav
+  display: inline-block
+  text-align: left
+
+.head-nav-list
+  +cf
+  background: #1f6796
+  list-style: none
+  margin: 0
+  > li
+    > a
+      color: #fff
+      display: block
+      font-weight: bold
+      padding: 12px
+      text-shadow: 1px 2px 0 #074f71
+  +media-query(desk)
+    > li
+      font-size: 17px
+      float: left
+      > a
+        padding: 12px 18px

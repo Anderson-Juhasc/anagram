@@ -1,0 +1,28 @@
+.contact
+  background: #f6f6f6
+
+.contact__grid
+  +cf
+  +media-query(desk)
+    margin-left: -24px
+
+.contact__cell
+  padding: 48px 0
+  +media-query(desk)
+    display: inline-block
+    margin-right: -0.28em
+    padding-left: 24px
+    vertical-align: top
+    width: 50%
+
+.contact-form
+  list-style: none
+  margin: 0
+  > li
+    margin-bottom: 24px
+    &:last-child
+      margin-bottom: 0
+
+.contact-form__label
+  display: block
+  margin-bottom: 12px

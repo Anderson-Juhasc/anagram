@@ -44,7 +44,7 @@ gulp.task('build', function (done) {
  */
 gulp.task('deploy', ['build'], function () {
   return gulp.src("./www/**/*")
-    .pipe(deploy({branch: 'master'}))
+    .pipe(deploy({branch: 'gh-pages'}))
 });
 
 /**

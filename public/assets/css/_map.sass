@@ -1,0 +1,25 @@
+.map
+  background: url(../img/map-bg.png) repeat-x top center
+  padding-top: 4px
+
+.map__head
+  background: #ff2f79
+  padding: 24px 0
+  text-align: center
+  +media-query(lap)
+    padding: 36px 0
+
+.map__title-img
+  max-width: 100%
+  width: 100%
+  +media-query(lap)
+    max-width: auto
+    width: auto
+
+.map__body
+  height: 205px
+  pointer-events: none
+  +media-query(lap)
+    height: 300px
+  +media-query(desk)
+    height: 410px

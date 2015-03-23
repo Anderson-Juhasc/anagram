@@ -13,16 +13,34 @@
     margin-right: -0.28em
     padding-left: 24px
     vertical-align: top
-    width: 50%
+
+.contact__cell--main
+  margin-bottom: 24px
+  +media-query(desk)
+    margin-bottom: 0
+    width: 65%
+
+.contact__cell--aside
+  +media-query(desk)
+    width: 35%
+
+.contact__title
+  font-size: 35px
+  line-height: 1.1
 
 .contact-form
   list-style: none
-  margin: 0
+  margin: 0 0 18px
   > li
-    margin-bottom: 24px
+    margin-bottom: 18px
     &:last-child
       margin-bottom: 0
+  +media-query(desk)
+    width: 60%
 
 .contact-form__label
   display: block
-  margin-bottom: 12px
+  margin-bottom: 6px
+
+.contact-action
+  text-align: right

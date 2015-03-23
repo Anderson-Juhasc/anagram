@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title></title>
+
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 </head>
 <body>
@@ -19,9 +22,9 @@
 
             <!-- .head-title -->
             <h1 class="head-title">
-                Muito mais <span class="head-title__blue">diversão</span> para
+                Muito mais <span class="blue">diversão</span> para
                 <br />
-                sua <span class="head-title__pink">celebração</span>
+                sua <span class="pink">celebração</span>
             </h1>
             <!-- /.head-title -->
 
@@ -74,9 +77,9 @@
             <!-- .about__body -->
             <div class="about__body">
                 <h2 class="about__title">
-                    Sobre
+                    <span class="pink">Sobre</span>
                     <br />
-                    Apresentação
+                    <span class="darkblue">Apresentação</span>
                 </h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -108,9 +111,9 @@
             <!-- .balloons__body -->
             <div class="balloons__body">
                 <h2 class="balloons__title">
-                    Balões Metalizados
+                    <span class="pink">Balões Metalizados</span>
                     <br />
-                    Anagram
+                    <span class="darkblue">Anagram</span>
                 </h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -127,7 +130,7 @@
     <div class="wrapper">
         <!-- .products -->
         <div class="products">
-            <h3 class="products__title">Produtos</h3>
+            <h3 class="products__title pink">Produtos</h3>
 
             <!-- .products__grid -->
             <div class="products__grid">
@@ -135,7 +138,7 @@
                 <div class="products__cell">
                     <!-- .products-item -->
                     <div class="products-item">
-                        <h4 class="products-item__title">Personagens</h4>
+                        <h4 class="products-item__title darkblue">Personagens</h4>
 
                         <ul class="products-item__list">
                             <li>
@@ -173,7 +176,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more">Ver todos</a>
+                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -183,7 +186,7 @@
                 <div class="products__cell">
                     <!-- .products-item -->
                     <div class="products-item">
-                        <h4 class="products-item__title">Mensagens</h4>
+                        <h4 class="products-item__title darkblue">Mensagens</h4>
 
                         <ul class="products-item__list">
                             <li>
@@ -221,7 +224,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more">Ver todos</a>
+                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -231,7 +234,7 @@
                 <div class="products__cell">
                     <!-- .products-item -->
                     <div class="products-item">
-                        <h4 class="products-item__title">Lisos</h4>
+                        <h4 class="products-item__title darkblue">Lisos</h4>
 
                         <ul class="products-item__list">
                             <li>
@@ -269,7 +272,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more">Ver todos</a>
+                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -279,7 +282,7 @@
                 <div class="products__cell">
                     <!-- .products-item -->
                     <div class="products-item">
-                        <h4 class="products-item__title">Variados</h4>
+                        <h4 class="products-item__title darkblue">Variados</h4>
 
                         <ul class="products-item__list">
                             <li>
@@ -317,7 +320,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more">Ver todos</a>
+                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -338,10 +341,14 @@
     <div class="store">
         <!-- .wrapper -->
         <div class="wrapper">
-            <h3 class="store__title">Loja Virtual</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <img src="" alt="" class="store__img" />
-            <a href="" class="store__btn">Clique aqui para comprar online</a>
+            <h3 class="store__title darkblue">Loja Virtual</h3>
+            <p class="store__text georgia">
+                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor<br /> incididunt ut labore et dolore magna aliqua.</em>
+            </p>
+            <div class="store__img">
+                <img src="assets/img/store-img.png" alt="" />
+            </div>
+            <a href="" class="store__btn btn btn--large btn--blue">Clique aqui para comprar online</a>
         </div>
         <!-- /.wrapper -->
     </div>
@@ -351,11 +358,16 @@
     <div class="map">
         <!-- .map__head -->
         <div class="map__head">
+            <!-- .wrapper -->
+            <div class="wrapper">
+                <img class="map__title-img" src="assets/img/map-title.png" alt="Onde Encontrar" />
+            </div>
+            <!-- /.wrapper -->
         </div>
         <!-- /.map__head -->
 
         <!-- .map__body -->
-        <div class="map__body">
+        <div class="map__body" id="map-canvas">
         </div>
         <!-- /.map__body -->
     </div>
@@ -374,20 +386,25 @@
             <!-- .contact__grid -->
             <div class="contact__grid">
                 <!-- .contact__cell -->
-                <div class="contact__cell">
+                <div class="contact__cell contact__cell--main">
                     <h3 class="contact__title">Fale conosco</h3>
 
                     <!-- .contact-form -->
                     <ul class="contact-form">
                         <li>
-                            <input id="" name="" placeholder="Nome" type="text" class="contact-form__input" />
+                            <label for="" class="contact-form__label">Nome:</label>
+                            <input id="" name="" placeholder="Nome" type="text" class="contact-form__input input input--full" />
                         </li>
                         <li>
-                            <input id="" name="" placeholder="E-mail" type="text" class="contact-form__input" />
+                            <label for="" class="contact-form__label">E-mail:</label>
+                            <input id="" name="" placeholder="E-mail" type="text" class="contact-form__input input input--full" />
                         </li>
                         <li>
-                            <label for="" class="contact-form__label">Mensagem</label>
-                            <textarea id="" name="" rows="10" class="contact-form__textarea"></textarea>
+                            <label for="" class="contact-form__label">Mensagem:</label>
+                            <textarea id="" name="" rows="7" class="contact-form__textarea textarea textarea--full"></textarea>
+                        </li>
+                        <li class="contact-action">
+                            <button type="submit" class="contact-action__btn btn btn--pink">Enviar</button>
                         </li>
                     </ul>
                     <!-- /.contact-form -->
@@ -395,7 +412,7 @@
                 <!-- /.contact__cell -->
 
                 <!-- .contact__cell -->
-                <div class="contact__cell">
+                <div class="contact__cell contact__cell--aside">
                     <h4 class="contact__subtitle">Serviços de atendimento</h4>
                     <ul class="contact__list">
                         <li>
@@ -432,7 +449,9 @@
                     <!-- .foot-top__cell -->
                     <div class="foot-top__cell">
                         <h5>Sobre a Anagram & Regina Festas</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="georgia">
+                            <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</em>
+                        </p>
                     </div>
                     <!-- /.foot-top__cell -->
 
@@ -470,13 +489,13 @@
                 <!-- .foot-bot__grid -->
                 <div class="foot-bot__grid">
                     <!-- .foot-bot__cell -->
-                    <div class="foot-bot__cell">
+                    <div class="foot-bot__cell foot-bot__cell--copy">
                         <div class="foot-bot__copy">Todos os direitos reservados Anagram Ballons e Regina Festas</div>
                     </div>
                     <!-- /.foot-bot__cell -->
 
                     <!-- .foot-bot__cell -->
-                    <div class="foot-bot__cell">
+                    <div class="foot-bot__cell foot-bot__cell--logo">
                         <a href="" class="foot-bot-logo">
                             <img src="assets/img/anagram-foot.png" alt="" />
                         </a>
@@ -490,5 +509,28 @@
         <!-- /.foot-bot -->
     </footer>
     <!-- /.foot -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+        // This example adds a marker to indicate the position
+        // of Bondi Beach in Sydney, Australia
+        function initialize() {
+          var mapOptions = {
+            zoom: 4,
+            center: new google.maps.LatLng(-33, 151)
+          }
+          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+          var image = 'assets/img/icon-map.png';
+          var myLatLng = new google.maps.LatLng(-33.890542, 151.274856);
+          var beachMarker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              icon: image
+          });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </body>
 </html>

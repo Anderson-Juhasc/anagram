@@ -16,16 +16,15 @@
     margin-left: 16px
 
 .head-title
+  > br
+    display: none
+  +media-query(lap)
+    > br
+      display: inline
   +media-query(desk)
     font-size: 64px
     line-height: 1
     margin-bottom: 54px
-
-.head-title__blue
-  color: #25d9f2
-
-.head-title__pink
-  color: #ff4a8a
 
 .head-next
   margin-bottom: 54px

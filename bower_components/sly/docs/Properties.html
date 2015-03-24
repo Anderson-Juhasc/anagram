@@ -1,0 +1,83 @@
+<h1>Properties</h1>
+<p>Sly instance exposes some useful properties. These properties are read only, and shouldn&#39;t be modified.</p>
+<p>Assuming:</p>
+<pre><code class="language-js">var sly = new Sly(frame, options).init();</code></pre>
+<hr>
+<h3>sly.initialized</h3>
+<p>Type: <code>Boolean</code></p>
+<p>Flag of Sly initialized state. <code>true</code> when <code>.init()</code> has been called, <code>false</code> otherwise.</p>
+<hr>
+<h3>sly.options</h3>
+<p>Type: <code>Object</code></p>
+<p>Object with all options used by the current Sly object. This is essentially a <code>Sly.defaults</code> object extended by options passed to <code>new Sly()</code>.</p>
+<hr>
+<h3>sly.frame</h3>
+<p>Type: <code>Node</code></p>
+<p>FRAME element DOM node.</p>
+<hr>
+<h3>sly.slidee</h3>
+<p>Type: <code>Node</code></p>
+<p>SLIDEE element DOM node.</p>
+<hr>
+<h3>sly.pos</h3>
+<p>Type: <code>Object</code></p>
+<p>Sly position object specifying the SLIDEE positions and boundaries:</p>
+<pre><code class="language-js">{
+    &quot;start&quot;: 0,    // SLIDEE start of the frame position.
+    &quot;center&quot;: 713, // SLIDEE center of the frame position.
+    &quot;end&quot;: 1426,   // SLIDEE end of the frame position.
+    &quot;cur&quot;: 604,    // Current SLIDEE position.
+    &quot;dest&quot;: 604,   // When in animation, this is the SLIDEE destination position.
+}</code></pre>
+<p>All positions are flipped from negative to positive numbers, so it would be easier to work with them.</p>
+<p>For example: SLIDEE element, when at the end of the frame, has CSS property <code>left</code> equal to <code>-1426px</code> (or translateX(-1426px) in browsers that support it), but in the position object, this is represented by positive number <code>end: 1426</code>. All Sly methods than accept the flipped position state, like <code>.slideTo(200)</code> to slide 200 pixels from the start of the FRAME, <code>.slideBy(100)</code> to slide by 100px forwards, <code>slideBy(-100)</code> to slide by 100px backwards, <code>.moveBy(300)</code> to move 300px per second forwards, <code>.moveBy(-300)</code> to move 300px per second backwards, ...</p>
+<hr>
+<h3>sly.rel</h3>
+<p>Type: <code>Object</code></p>
+<p>Sly relatives object:</p>
+<pre><code class="language-js">{
+    &quot;firstItem&quot;: 2,     // First at least half visible item in the FRAME.
+    &quot;lastItem&quot;: 9,      // Last at least half visible item in the FRAME.
+    &quot;centerItem&quot;: 5,    // Item in the middle of the visible FRAME.
+    &quot;activeItem&quot;: 0,    // Current active item.
+    &quot;activePage&quot;: 1,    // Current active page.
+    &quot;slideeSize&quot;: 2566, // LIDEE size.
+    &quot;frameSize&quot;: 1140,  // FRAME size.
+    &quot;sbSize&quot;: 1140,     // Scrolbar size.
+    &quot;handleSize&quot;: 506   // Scrollbar handle size.
+}</code></pre>
+<p>All relatives are updated on every position change, so they are always current. The relatives are always determined from destination position (<code>pos.dest</code>), and never from current position (<code>pos.cur</code>).</p>
+<p>The item properties in non-item based navigation (<code>firstItem</code>, ...) are <code>0</code> &amp; irrelevant.</p>
+<hr>
+<h3>sly.items</h3>
+<p>Type: <code>Array</code></p>
+<p>Array of item objects. This array is empty &amp; irrelevant in non-item based navigation. Structure:</p>
+<pre><code class="language-js">[
+    {
+        el: DOMNode,  // Item element DOM node.
+        start: 0,     // Item start of the FRAME position.
+        center: -495, // Item center of the FRAME position.
+        end: -990,    // Item end of the FRAME position.
+        size: 151     // Item size in a corresponded Sly direction.
+    },
+    ...
+]</code></pre>
+<p>Following the position object flipping rule, the negative sign is flipped for each position property. The item object properties are than designed to be used like this:</p>
+<pre><code class="language-js">sly.slideTo(sly.items[6].center); // Animates 7th item to the center of the FRAME</code></pre>
+<p>But this is mostly for Sly internals, and is quite redundant as the same can be accomplished by:</p>
+<pre><code class="language-js">sly.toCenter(6);</code></pre>
+<p>By examining the item object in the example, you can see that <code>center</code> and <code>end</code> properties are out of bounds, as they are smaller than <code>sly.pos.start</code>, so Sly will never animate SLIDEE to such position (unless you are dragging the content past boundaries and <code>elasticBounds</code> are enabled). If Sly would be created with <code>forceCentered</code> navigation type, the <code>sly.pos.start</code> would be than equal to <code>-495</code>, which is the center position of the first object, i.e. <code>sly.items[0].center</code>.</p>
+<hr>
+<h3>sly.pages</h3>
+<p>Type: <code>Array</code></p>
+<p>Array with page start positions:</p>
+<pre><code class="language-js">[
+    0,    // First page start position.
+    1057, // Second page start position.
+    2114  // Third page start position.
+]</code></pre>
+<p>The <code>sly.activatePage(1)</code> is then essentially just a shorthand for <code>sly.slideTo(sly.pages[1])</code>.</p>
+<hr>
+<h3>sly.isPaused</h3>
+<p>Type: <code>Int</code></p>
+<p>Pause priority level. When cycling is paused, this value is higher than <code>0</code>, so it is safe to use it as a truthy value in conditionals: <code>if (sly.isPaused) { ... }</code>.</p>

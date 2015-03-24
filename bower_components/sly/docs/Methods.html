@@ -1,0 +1,272 @@
+<h1>Methods</h1>
+<p>Sly has a bunch of very useful methods that provide almost any functionality required. You can call them directly on a <a href="Calling.md">sly object</a>, or (if you are lame) via a <code>jQuery.fn.sly</code> proxy, like so:</p>
+<pre><code class="language-js">$(&#39;#frame&#39;).sly(&#39;method&#39; [, arguments... ] );</code></pre>
+<p>The docs &amp; examples below assume that:</p>
+<pre><code class="language-js">var sly = new Sly(frame, options).init();</code></pre>
+<h2>Methods</h2>
+<h3>#init()</h3>
+<p>Initiates Sly instance, i.e. sets the required styles, binds event handlers,...</p>
+<p>This method returns the very same object it was called on, so you can chain it right after the instance creation:</p>
+<pre><code class="language-js">var sly = new Sly(frame, options, callbackMap).init();</code></pre>
+<p>The purpose of this is to give you time to register callbacks with <code>.on()</code> and <code>.off()</code> methods without using <code>callbackMap</code> argument before anything happens.</p>
+<hr>
+<h3>#destroy()</h3>
+<p>Removes classes, resets positions, and unbinds all event listeners. When called via <code>.sly()</code> proxy, you can also use an alias:</p>
+<pre><code class="language-js">$(&#39;#frame&#39;).sly(false); // does the same thing</code></pre>
+<p>Returns the Sly object, so you can do shenanigans like <code>new Sly().init().destroy().init()</code>.</p>
+<hr>
+<h3>#reload()</h3>
+<p>Recalculates sizes and positions of elements. Call it if any change has happened to FRAME or its content, like things have been appended, removed, or resized.</p>
+<hr>
+<h3>#slideTo(position, [immediate])</h3>
+<p>Animate SLIDEE to a specific position - offset from the start of a FRAME in pixels. In item based navigation, final position will be adjusted to snap items to the edge/center of the visible FRAME.</p>
+<ul>
+<li><strong>position</strong> <code>Integer</code> New SLIDEE position. It will be adjusted to fit within <code>pos.start</code> and <code>pos.end</code>.</li>
+<li><strong>[immediate]</strong> <code>Boolean</code> When <code>true</code>, re-positioning will occur immediately without animation.</li>
+</ul>
+<hr>
+<h3>#slideBy(delta, [immediate])</h3>
+<p>Animate SLIDEE by an amount of pixels. In item based navigation, final position will be adjusted to snap items to edge/center of the visible FRAME.</p>
+<ul>
+<li><strong>delta</strong> <code>Integer</code> Number of pixels, or items (in item based navigation) to slide the SLIDEE by. Negative animates towards the beginning, positive towards the end. The final position will be adjusted to fit within <code>pos.start</code> and <code>pos.end</code>.</li>
+<li><strong>[immediate]</strong> <code>Boolean</code> When <code>true</code>, re-positioning will occur immediately without animation.</li>
+</ul>
+<p>This method is essentially just a shorthand for <code>sly.slideTo(sly.pos.dest + delta)</code>.</p>
+<hr>
+<h3>#toStart([target], [immediate])</h3>
+<p>Positions <strong>target</strong> to the start of a visible FRAME. When no <strong>target</strong> is passed, the whole SLIDEE will be used.</p>
+<p>Doesn&#39;t work in <code>centered</code> or <code>forceCentered</code> item navigation.</p>
+<ul>
+<li><strong>[target]</strong> <code>Mixed</code> In item based navigation, it can be an item index, or an item DOM element. In non-item base navigation, it can be a selector or a DOM node of any element inside of SLIDEE.</li>
+<li><strong>[immediate]</strong> <code>Boolean</code> When <code>true</code>, re-positioning will occur immediately without animation.</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="language-js">// Universal
+sly.toStart(); // Position the whole SLIDEE to the start
+sly.toStart(true); // Position whole SLIDEE to the start, immediately
+
+// Item based navigation
+sly.toStart(2); // Position 3rd item in SLIDEE to the start of a visible FRAME
+sly.toStart($items.eq(1), true); // Position 2nd item in SLIDEE to the start, immediately
+
+// Non-item based navigation
+sly.toStart(&#39;h2&#39;); // Position the first H2 element in SLIDEE to the start of a visible FRAME
+sly.toStart($(&#39;h2&#39;).eq(1), true); // Position second H2 element in SLIDEE to the start, immediately</code></pre>
+<hr>
+<h3>#toCenter([target], [immediate])</h3>
+<p>Positions <strong>target</strong> to the center of a visible FRAME. When no <strong>target</strong> is passed, the whole SLIDEE will be used.</p>
+<ul>
+<li><strong>[target]</strong> <code>Mixed</code> In item based navigation, it can be an item index, or an item DOM element. In non-item base navigation, it can be a selector or a DOM node of any element inside of SLIDEE.</li>
+<li><strong>[immediate]</strong> <code>Boolean</code> When <code>true</code>, re-positioning will occur immediately without animation.</li>
+</ul>
+<p>Examples from <strong>toStart</strong> apply here as well.</p>
+<hr>
+<h3>#toEnd([target], [immediate])</h3>
+<p>Positions <strong>target</strong> to the end of a visible FRAME. When no <strong>target</strong> is passed, the whole SLIDEE will be used.</p>
+<p>Doesn&#39;t work in <code>centered</code> or <code>forceCentered</code> item navigation.</p>
+<ul>
+<li><strong>[target]</strong> <code>Mixed</code> In item based navigation, it can be an item index, or an item DOM element. In non-item base navigation, it can be a selector or a DOM node of any element inside of SLIDEE.</li>
+<li><strong>[immediate]</strong> <code>Boolean</code> When <code>true</code>, re-positioning will occur immediately without animation.</li>
+</ul>
+<p>Examples from <strong>toStart</strong> apply here as well.</p>
+<hr>
+<h3>#moveBy(speed)</h3>
+<p>Initiates continuous linear movement in the direction and speed specified by <code>speed</code> argument. The movement will continue until the position reaches a limit, or <code>.stop()</code> method is called.</p>
+<ul>
+<li><strong>speed</strong> <code>Int</code> Movement speed in pixels per second. Negative number means backward movement.</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="language-js">sly.moveBy(300); // Move forwards with speed of 300px per second
+sly.moveby(-200); // Move backwards with speed of 200px per second</code></pre>
+<hr>
+<h3>#stop()</h3>
+<p>Stops the continuous movement initiated my <code>.moveBy()</code> method.</p>
+<hr>
+<h3>#activate(item, [immediate])</h3>
+<p>Activates an item, and when <code>smart</code> is enabled, repositions it to help with further navigation. Irrelevant in non-item based navigation.</p>
+<ul>
+<li><strong>item</strong> <code>Mixed</code> Index or DOM element of an item in SLIDEE that should be activated. Items index starts at <code>0</code>.</li>
+<li><strong>[immediate]</strong> <code>Boolean</code> When <code>true</code>, re-positioning will occur immediately without animation.</li>
+</ul>
+<hr>
+<h3>#prev()</h3>
+<p>Activates previous item. Irrelevant in non-item based navigation.</p>
+<hr>
+<h3>#next()</h3>
+<p>Activates next item. Irrelevant in non-item based navigation.</p>
+<hr>
+<h3>#activatePage(index, [immediate])</h3>
+<p>Activate a page.</p>
+<ul>
+<li><strong>index</strong> <code>Int</code> Index of a page that should be activated, starting at 0.</li>
+<li><strong>[immediate]</strong> <code>Boolean</code> When <code>true</code>, re-positioning will occur immediately without animation.</li>
+</ul>
+<hr>
+<h4>#prevPage()</h4>
+<p>Activates previous page. When <strong>forceCentered</strong> navigation is used, this is a mere alias of <code>.prev()</code> method.</p>
+<hr>
+<h4>#nextPage()</h4>
+<p>Activates next page. When <strong>forceCentered</strong> navigation is used, this is a mere alias of <code>.next()</code> method.</p>
+<hr>
+<h3>#pause([priority])</h3>
+<p>Pauses automated cycling.</p>
+<ul>
+<li><strong>[priority]</strong> <code>Int</code> Pause priority level. Default is <code>100</code>.</li>
+</ul>
+<p>The priority level is used internally for <code>pauseOnHover</code> functionality. You can mostly ignore it.</p>
+<hr>
+<h3>#resume([priority])</h3>
+<p>Resumes automated cycling.</p>
+<ul>
+<li><strong>[priority]</strong> <code>Int</code> Resume priority level. Default is <code>100</code>.</li>
+</ul>
+<p>Will resume only a pause  with equal or lower priority level.</p>
+<p>The priority level is used internally for <code>pauseOnHover</code> functionality. You can mostly ignore it.</p>
+<hr>
+<h3>#toggle()</h3>
+<p>Starts when paused, or pauses when cycling.</p>
+<hr>
+<h3>#set(name, [value])</h3>
+<p>Updates one, or multiple values in an options object.</p>
+<pre><code class="language-js">sly.set(&#39;speed&#39;, 0); // Updates one property in options object
+sly.set({ speed: 0, cycleInterval: 0 }); // Extends current options object</code></pre>
+<p>Not all options can be updated. This is the list of those that can:</p>
+<ul>
+<li>smart</li>
+<li>activateMiddle</li>
+<li>scrollBy</li>
+<li>mouseDragging</li>
+<li>touchDragging</li>
+<li>releaseSwing</li>
+<li>swingSpeed</li>
+<li>elasticBounds</li>
+<li>dragHandle</li>
+<li>clickBar</li>
+<li>syncSpeed</li>
+<li>cycleBy</li>
+<li>cycleInterval</li>
+<li>pauseOnHover</li>
+<li>moveBy</li>
+<li>speed</li>
+<li>easing</li>
+<li>keyboardNavBy</li>
+<li>draggedClass</li>
+<li>activeClass</li>
+<li>disabledClass</li>
+</ul>
+<p>You can however update any option, and than do <code>sly.destroy().init()</code> to re-initiate Sly object, thus rebinding all event listeners, rebuilding pages, ...</p>
+<hr>
+<h3>#add(item, [position])</h3>
+<p>Adds one or multiple items to the SLIDEE end, or a specified position, and than reloads the Sly object.</p>
+<ul>
+<li><strong>item</strong> <code>Mixed</code> DOM element, DOM node list, array with DOM elements, or HTML string of new item(s).</li>
+<li><strong>[position]</strong> <code>Int</code> The position where the new item should be placed. Relevant only in item based navigation.</li>
+</ul>
+<p>When inserting new items, especially in item-based navigation, you want to use this method as it also handles the active item index. For example: when <code>sly.rel.activeItem: 8</code>, and inserting new item at position <code>6</code>, the item <code>6</code> will be pushed to position <code>7</code>, and <code>sly.rel.activeItem</code> will shift to <code>9</code>.</p>
+<p>Examples:</p>
+<pre><code class="language-js">sly.add(document.createElement(&#39;li&#39;), 5); // Insert item at position 5
+sly.add([LIElement, LIElement]); // Insert multiple items at the end of SLIDEE
+sly.add(&#39;&lt;li&gt;&lt;/li&gt;&#39;, 0); // Insert new item at the beginning of SLIDEE</code></pre>
+<hr>
+<h3>#remove(element)</h3>
+<p>Removes one element from SLIDEE, and reloads the Sly object.</p>
+<ul>
+<li><strong>element</strong> <code>Mixed</code> In item based navigation, it can be item index, DOM element, or selector. In non-item based, it can be only a DOM element or selector.</li>
+</ul>
+<hr>
+<h3>#moveAfter(item, position)</h3>
+<p>Method for re-arranging items. Moves an item after the position index. Irrelevant in non-item based navigation.</p>
+<ul>
+<li><strong>item</strong> <code>Mixed</code> Item to be positioned. Can be DOM element, or relative item index.</li>
+<li><strong>position</strong> <code>Mixed</code> Anchor item. Can be DOM element, or relative item index.</li>
+</ul>
+<p>Relative index means, that you can pass negative index to select items from the end of items list. For example: passing <code>-1</code> selects the last item.</p>
+<p>Examples:</p>
+<pre><code class="language-js">sly.moveAfter(0, -1); // Moves first item after the last item
+sly.moveAfter(-2, 5); // Moves the second to last item after the 6th item</code></pre>
+<hr>
+<h3>#moveBefore(item, position)</h3>
+<p>Method for re-arranging items. Moves an item before the position index. Irrelevant in non-item based navigation.</p>
+<ul>
+<li><strong>item</strong> <code>Mixed</code> Item to be positioned. Can be DOM element, or relative item index.</li>
+<li><strong>position</strong> <code>Mixed</code> Anchor item. Can be DOM element, or relative item index.</li>
+</ul>
+<p>Relative index means, that you can pass negative index to select items from the end of items list. For example: passing <code>-1</code> selects the last item.</p>
+<p>Examples:</p>
+<pre><code class="language-js">sly.moveBefore(-1, 0); // Moves the last item before the first one
+sly.moveBefore(-2, 5); // Moves the second to last item before the 6th item</code></pre>
+<hr>
+<h3>#on(eventName, callback)</h3>
+<p>Registers a callback to one or more of the Sly events. All available events and arguments they receive can be found in the <a href="Events.md">Events documentation</a>.</p>
+<ul>
+<li><strong>eventName</strong> <code>Mixed</code> Name of the event, or callback map object.</li>
+<li><strong>callback</strong> <code>Mixed</code> Callback function, or an array with callback functions.</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="language-js">// Basic usage
+sly.on(&#39;load&#39;, function () {});
+
+// Multiple events, one callback
+sly.on(&#39;load move&#39;, function () {});
+
+// Multiple callbacks for multiple events
+sly.on(&#39;load move&#39;, [
+    function () {},
+    function () {}
+]);
+
+// Callback map object
+sly.on({
+    load: function () {},
+    move: [
+        function () {},
+        function () {}
+    ]
+});</code></pre>
+<hr>
+<h3>#one(eventName, callback)</h3>
+<p>Same as <code>.on()</code> method, but registered callbacks will be executed only once, and will be unbind afterwards.</p>
+<ul>
+<li><strong>eventName</strong> <code>Mixed</code> Name of the event, or callback map object.</li>
+<li><strong>callback</strong> <code>Mixed</code> Callback function, or an array with callback functions.</li>
+</ul>
+<hr>
+<h3>#off(eventName, [callback])</h3>
+<p>Removes one, multiple, or all callbacks from one of the Sly events.</p>
+<ul>
+<li><strong>eventName</strong> <code>String</code> Name of the event.</li>
+<li><strong>[callback]</strong> <code>Mixed</code> Callback function, or an array with callback functions to be removed. Omit to remove all callbacks.</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="language-js">// Removes one callback from load event
+sly.off(&#39;load&#39;, fn1);
+
+// Removes one callback from multiple events
+sly.off(&#39;load move&#39;, fn1);
+
+// Removes multiple callbacks from multiple event
+sly.off(&#39;load move&#39;, [ fn1, fn2 ]);
+
+// Removes all callbacks from load event
+sly.off(&#39;load&#39;);</code></pre>
+<hr>
+<h3>#getPos(item)</h3>
+<p>Returns the position object of a requested item.</p>
+<ul>
+<li><strong>item</strong> In non-item based navigation, it can be DOM element, or selector for any item inside of a SLIDEE. In item based navigation, it can also be an index of item starting at 0.</li>
+</ul>
+<p>The item position object looks like this:</p>
+<pre><code>{
+    start: 100,  // Start position inside of the FRAME.
+    center: 300, // Center position inside of the FRAME.
+    end: 700,    // End position inside of the FRAME.
+    size: 150    // Size in the current Sly direction.
+}</code></pre>
+<p>When item hasn&#39;t been found, returns <code>false</code>.</p>
+<hr>
+<h3>#getIndex(item)</h3>
+<p>Returns an index of an item in item based navigation, or -1 when not found.</p>
+<ul>
+<li><strong>item</strong> Can be DOM node of an item element, or index in case of checks.</li>
+</ul>
+<p>When you pass an integer to the <strong>item</strong> argument, the function will just check whether it is a valid index (fits between 0 and sly.items.length - 1), and return the very same number, or -1 when invalid.</p>

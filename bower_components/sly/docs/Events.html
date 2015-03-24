@@ -1,0 +1,118 @@
+<h1>Events</h1>
+<p>You can register callbacks to Sly events in multiple ways.</p>
+<p>Passing in a callbackMap on Sly object creation:</p>
+<pre><code class="language-js">var frame = new Sly(&#39;#frame&#39;, options, {
+    load: fn,
+    move: [fn1, fn2] // Multiple callbacks
+}).init();</code></pre>
+<p>With <code>.on()</code>, <code>.one()</code> and <code>.off()</code> methods:</p>
+<pre><code class="language-js">var frame = new Sly(&#39;#frame&#39;, options);
+
+// Register a callback to multiple events
+frame.on(&#39;load move&#39;, fn);
+
+// Register a callback that will be executed only once
+frame.one(&#39;load&#39;, fn);
+
+// Initiate Sly instance
+frame.init();</code></pre>
+<p>Events via <code>jQuery.fn.sly</code>:</p>
+<pre><code class="language-js">$(&#39;#frame&#39;).sly(&#39;on&#39;, &#39;load move&#39;, fn);</code></pre>
+<p>More usage examples can be found in the <a href="Methods.md">on, one, and off methods documentation</a>.</p>
+<h2>Common arguments</h2>
+<h4>this</h4>
+<p>The <code>this</code> value in all callbacks is the sly object triggering the event. With it you have access to all <a href="Properties.md">Sly object properties</a>.</p>
+<h4>1st argument</h4>
+<p>All callbacks receive the event name as the first argument.</p>
+<hr>
+<p>Example:</p>
+<pre><code class="language-js">sly.on(&#39;load&#39;, function (eventName) {
+    console.log(eventName); // &#39;load&#39;
+    console.log(this.pos);  // Sly position object
+});</code></pre>
+<h2>Events</h2>
+<h3>load</h3>
+<p>Event triggered on first sly load, and on each <code>.reload()</code> method call.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>
+<p><strong>NOTE</strong>: The  <code>sly.pos</code> or <code>this.pos</code> object in this event also contains an <code>old</code> property, containing the position object as it was before the reload. The position object than looks like this:</p>
+<pre><code class="language-js">{
+    cur: 100,
+    dest: 100,
+    end: 120,
+    start: 0,
+    old: {
+        cur: 100,
+        dest: 100,
+        end: 100,
+        start: 0
+    }
+}</code></pre>
+<hr>
+<h3>active</h3>
+<p>Event triggered when new item has been activated.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+<li><strong>itemIndex</strong> <code>Int</code> Index of activated item.</li>
+</ol>
+<hr>
+<h3>activePage</h3>
+<p>Event triggered when new page has been activated, or Sly arrived at it while scrolling.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+<li><strong>pageIndex</strong> <code>Int</code> Index of activated page.</li>
+</ol>
+<hr>
+<h3>change</h3>
+<p>Event triggered whenever a new position change has been requested. That means that when you call <code>.slideTo(newPos)</code> it will trigger one <code>change</code> event right before the animation starts.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>
+<p><strong>Note!:</strong> When dragging a scrollbar handle or a SLIDEE, this event is being triggered on each mouse move, which is quite often.</p>
+<hr>
+<h3>move</h3>
+<p>Event triggered on every frame of the animation. Animations are chained to requestAnimationFrame, so the frequency of this event when Sly is in animation is 60 FPS.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>
+<hr>
+<h3>moveStart</h3>
+<p>Event triggered on start of every animation or dragging. <em>or dragging</em> means that <code>moveStart</code> will fire only when you start dragging (touchstart, mousedown), and not when you just pause and start moving again.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>
+<hr>
+<h3>moveEnd</h3>
+<p>Event triggered on end of every animation or dragging. <em>or dragging</em> means that <code>moveEnd</code> will fire only when you stop dragging (touchend, mouseup), and not when you just stop moving.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>
+<hr>
+<h3>pause</h3>
+<p>Triggered when cycling has been paused. That includes <code>pauseOnHover</code> functionality.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>
+<hr>
+<h3>resume</h3>
+<p>Triggered when cycling has been resumed.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>
+<hr>
+<h3>cycle</h3>
+<p>Triggered on each cycle tick.</p>
+<p>Callback arguments:</p>
+<ol>
+<li><strong>eventName</strong> <code>String</code> Event name.</li>
+</ol>

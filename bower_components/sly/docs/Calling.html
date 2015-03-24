@@ -1,0 +1,57 @@
+<h1>Calling</h1>
+<p>When you want to have a direct access to all methods and complete control over Sly:</p>
+<pre><code class="language-js">var sly = new Sly( frame, options [, callbackMap ] );</code></pre>
+<p>New instance has to be than initiated. That is to give you time to bind callbacks before anything happens. For example, if you want to register callbacks, but don&#39;t want to use <code>callbackMap</code>.</p>
+<pre><code class="language-js">sly.init();</code></pre>
+<p>The <code>.init()</code> method returns the very same instance it is called on, so if you are binding callbacks via a <code>callbackMap</code> argument, or not binding callbacks at all, you can initiate the instance right after the <code>new Sly</code> call. The <code>sly</code> variable will be the same.</p>
+<pre><code class="language-js">var sly = new Sly(frame, options, callbackMap).init();</code></pre>
+<p>Now you can use all methods directly on this instance.</p>
+<pre><code class="language-js">sly.activate(1); // Activates 2nd element
+sly.reload();    // Reload Sly</code></pre>
+<p>A common usecase is wanting sly to be reloaded when the user resizes the browser. The following accomplishes that</p>
+<pre><code>  $(window).resize(function(e) {
+        $frame.sly(&#39;reload&#39;);
+  });</code></pre>
+<hr>
+<h3>frame</h3>
+<p>Type: <code>Mixed</code></p>
+<p>Argument can be a selector, DOM element, or jQuery object containing an element. Examples:</p>
+<pre><code class="language-js">var sly = new Sly(&#39;#frame&#39;);                         // selector
+var sly = new Sly(document.getElementById(&#39;frame&#39;)); // DOM element
+var sly = new Sly(jQuery(&#39;#frame&#39;));                 // jQuery object</code></pre>
+<hr>
+<h3>options</h3>
+<p>Type: <code>Object</code></p>
+<p>Object with Sly options. All options are documented in the <a href="Options.md">Options Wiki page</a>.</p>
+<hr>
+<h3>[ callbackMap ]</h3>
+<p>Type: <code>Object</code></p>
+<p>Map with callbacks that should be registered to Sly events before Sly gets initiated. Example:</p>
+<pre><code class="language-js">var sly = new Sly(frame, options, {
+    load: function () {},
+    move: [
+        function () {},
+        function () {}
+    ]
+});</code></pre>
+<p>This will bind one function to <code>load</code> event, and two functions to <code>move</code> event.</p>
+<p>To see all available Sly events, head over to <a href="Events.md">Events documentation</a>.</p>
+<h2>Calling via jQuery proxy</h2>
+<pre><code class="language-js">$(&#39;#frame&#39;).sly( [ options [, callbackMap ] ] );</code></pre>
+<hr>
+<h3>[ options ]</h3>
+<p>Type: <code>Object</code></p>
+<p>Object with sly options. All options are documented in the <a href="Options.md">Options Wiki page</a>.</p>
+<hr>
+<h3>[ callbackMap ]</h3>
+<p>Type: <code>Object</code></p>
+<p>Map with callbacks that should be registered to Sly events before Sly gets initiated. Example:</p>
+<pre><code class="language-js">$(&#39;#frame&#39;).sly(options, {
+    load: function () {},
+    move: [
+        function () {},
+        function () {}
+    ]
+});</code></pre>
+<p>This will bind one function to <code>load</code> event, and two functions to <code>move</code> event.</p>
+<p>To see all available Sly events, head over to <a href="Events.md">Events documentation</a>.</p>

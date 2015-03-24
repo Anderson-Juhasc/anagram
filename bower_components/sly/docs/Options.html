@@ -1,0 +1,324 @@
+<h1>Options</h1>
+<p>All default options are stored in the <code>Sly.defaults</code> object. You can modify them simply by:</p>
+<pre><code class="language-js">Sly.defaults.speed = 300;
+Sly.defaults.smart = 1;</code></pre>
+<p>Or you can make it easier with jQuery.extend:</p>
+<pre><code class="language-js">jQuery.extend(Sly.defaults, {
+    speed: 300,
+    smart: 1
+});</code></pre>
+<p>By default, everything is disabled. Initiating Sly with all default options will leave you with a dead FRAME that doesn&#39;t do anything.</p>
+<h2>Quick reference</h2>
+<p>Sly call with all default options as defined in the source.</p>
+<pre><code class="language-js">var frame = new Sly(&#39;#frame&#39;, {
+    horizontal: false, // Switch to horizontal mode.
+
+    // Item based navigation
+    itemNav:        null,  // Item navigation type. Can be: &#39;basic&#39;, &#39;centered&#39;, &#39;forceCentered&#39;.
+    itemSelector:   null,  // Select only items that match this selector.
+    smart:          false, // Repositions the activated item to help with further navigation.
+    activateOn:     null,  // Activate an item on this event. Can be: &#39;click&#39;, &#39;mouseenter&#39;, ...
+    activateMiddle: false, // Always activate the item in the middle of the FRAME. forceCentered only.
+
+    // Scrolling
+    scrollSource: null,  // Element for catching the mouse wheel scrolling. Default is FRAME.
+    scrollBy:     0,     // Pixels or items to move per one mouse scroll. 0 to disable scrolling.
+    scrollHijack: 300,   // Milliseconds since last wheel event after which it is acceptable to hijack global scroll.
+    scrollTrap:   false, // Don&#39;t bubble scrolling when hitting scrolling limits.
+
+    // Dragging
+    dragSource:    null,  // Selector or DOM element for catching dragging events. Default is FRAME.
+    mouseDragging: false, // Enable navigation by dragging the SLIDEE with mouse cursor.
+    touchDragging: false, // Enable navigation by dragging the SLIDEE with touch events.
+    releaseSwing:  false, // Ease out on dragging swing release.
+    swingSpeed:    0.2,   // Swing synchronization speed, where: 1 = instant, 0 = infinite.
+    elasticBounds: false, // Stretch SLIDEE position limits when dragging past FRAME boundaries.
+    interactive:   null,  // Selector for special interactive elements.
+
+    // Scrollbar
+    scrollBar:     null,  // Selector or DOM element for scrollbar container.
+    dragHandle:    false, // Whether the scrollbar handle should be draggable.
+    dynamicHandle: false, // Scrollbar handle represents the ratio between hidden and visible content.
+    minHandleSize: 50,    // Minimal height or width (depends on sly direction) of a handle in pixels.
+    clickBar:      false, // Enable navigation by clicking on scrollbar.
+    syncSpeed:     0.5,   // Handle =&gt; SLIDEE synchronization speed, where: 1 = instant, 0 = infinite.
+
+    // Pagesbar
+    pagesBar:       null, // Selector or DOM element for pages bar container.
+    activatePageOn: null, // Event used to activate page. Can be: click, mouseenter, ...
+    pageBuilder:          // Page item generator.
+        function (index) {
+            return &#39;&lt;li&gt;&#39; + (index + 1) + &#39;&lt;/li&gt;&#39;;
+        },
+
+    // Navigation buttons
+    forward:  null, // Selector or DOM element for &quot;forward movement&quot; button.
+    backward: null, // Selector or DOM element for &quot;backward movement&quot; button.
+    prev:     null, // Selector or DOM element for &quot;previous item&quot; button.
+    next:     null, // Selector or DOM element for &quot;next item&quot; button.
+    prevPage: null, // Selector or DOM element for &quot;previous page&quot; button.
+    nextPage: null, // Selector or DOM element for &quot;next page&quot; button.
+
+    // Automated cycling
+    cycleBy:       null,  // Enable automatic cycling by &#39;items&#39; or &#39;pages&#39;.
+    cycleInterval: 5000,  // Delay between cycles in milliseconds.
+    pauseOnHover:  false, // Pause cycling when mouse hovers over the FRAME.
+    startPaused:   false, // Whether to start in paused sate.
+
+    // Mixed options
+    moveBy:        300,     // Speed in pixels per second used by forward and backward buttons.
+    speed:         0,       // Animations speed in milliseconds. 0 to disable animations.
+    easing:        &#39;swing&#39;, // Easing for duration based (tweening) animations.
+    startAt:       null,    // Starting offset in pixels or items.
+    keyboardNavBy: null,    // Enable keyboard navigation by &#39;items&#39; or &#39;pages&#39;.
+
+    // Classes
+    draggedClass:  &#39;dragged&#39;, // Class for dragged elements (like SLIDEE or scrollbar handle).
+    activeClass:   &#39;active&#39;,  // Class for active items and pages.
+    disabledClass: &#39;disabled&#39; // Class for disabled navigation elements.
+});</code></pre>
+<h1>Options</h1>
+<h3>horizontal</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Switches to horizontal mode.</p>
+<hr>
+<h6>Item based navigation</h6>
+<hr>
+<h3>itemNav</h3>
+<p>Type: <code>String</code>
+Default: <code>null</code></p>
+<p>This option activates item based navigation. There are multiple navigation types:</p>
+<ul>
+<li><p><strong>basic</strong></p>
+<p>  Items snap to FRAME edges.</p>
+</li>
+<li><p><strong>centered</strong></p>
+<p>  Activated item, or item that happens to be in the middle are positioned to the center of a visible FRAME when possible. &quot;When possible&quot; means that the first or last items wont detach SLIDEE from the FRAME edges, thus they will remain at the start or end of the visible FRAME.</p>
+</li>
+<li><p><strong>forceCentered</strong></p>
+<p>  Same as centered, without the &quot;when possible&quot; part. All items, even first and last ones can be positioned to the center of the frame when they are activated, or just moved there.</p>
+</li>
+</ul>
+<h3>itemSelector</h3>
+<p>Type: <code>String</code>
+Default: <code>null</code></p>
+<p>Selector to be used for items. It only makes sense to use a selector that will select only visible items. If you&#39;ll select only some items, but leave others visible, the item based navigation won&#39;t work properly.</p>
+<h3>smart</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Enables smart navigation. Smart navigation will re-position the activated item to help with further navigation. For example, in <code>basic</code> navigation type, when last visible item is activated, Sly will animate it to the start of the FRAME, as it assumes that user is moving forward.</p>
+<p>In centered navigation types, all activated items are positioned to the center of the frame.</p>
+<h3>activateOn</h3>
+<p>Type: <code>String</code>
+Default: <code>null</code></p>
+<p>Event name. When an item will receive this event, it will be activated. You&#39;ll mostly want to set it to <code>click</code>. Leave <code>null</code> to disable activating items by user interaction.</p>
+<h3>activateMiddle</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>This will automatically activate an item that happens to be in the middle of the visible FRAME. This option is available only for <code>forceCentered</code> navigation type.</p>
+<hr>
+<h6>Scrolling</h6>
+<hr>
+<h3>scrollSource</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>FRAME</code></p>
+<p>Element to be used as a listener for mouse wheel scroll events. By default, FRAME is used.</p>
+<p>You can pass a selector string, a DOM element, or a jQuery object with element. You can also pass the <code>document</code>, which is quite useful in <a href="Parallax.md">parallax mode</a>.</p>
+<h3>scrollBy</h3>
+<p>Type: <code>Integer</code>
+Default: <code>0</code></p>
+<p>Number of pixels, or - in item based navigation - items, to move per one mouse wheel scroll event. Leave at <code>0</code> to disable.</p>
+<h3>scrollHijack</h3>
+<p>Type: <code>Integer</code>
+Default: <code>300</code></p>
+<p>Number of milliseconds since last global wheel event after which it is acceptable to hijack global scroll.</p>
+<h3>scrollTrap</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Set this to <code>true</code> to catch all scrolls originating on FRAME. By default, when there is nowhere to scroll, Sly lets scroll events bubble so they can scroll the parent document.</p>
+<hr>
+<h6>Dragging</h6>
+<hr>
+<p>Dragging can&#39;t be initiated by interactive elements. By default, Sly recognizes <code>input</code>, <code>button</code>, <code>select</code>, or a <code>textarea</code> elements as interactive. You can expand this pool by passing a selector into <a href="#interactive"><code>interactive</code></a> option described below.</p>
+<h3>dragSource</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>FRAME</code></p>
+<p>Element to be used as a listener for dragging initiation events (mousedown/touchstart). By default, FRAME is used.</p>
+<p>You can pass a selector string, a DOM element, or a jQuery object with element. You can also pass the <code>document</code>, which is quite useful in <a href="Parallax.md">parallax mode</a>.</p>
+<h3>mouseDragging</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Enables navigation by dragging the FRAME content with mouse cursor.</p>
+<h3>touchDragging</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Enables navigation by dragging the FRAME content with touch events.</p>
+<h3>releaseSwing</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Whether Sly should calculate additional easing path for swipe/swing gestures after draggin has been released. The path length is calculated by the swing strength, i.e. the path that pointer moved in the last 40ms.</p>
+<h3>swingSpeed</h3>
+<p>Type: <code>Float</code>
+Default: <code>0.2</code></p>
+<p>This specifies the release swing animation speed. For this animation Sly uses non-duration based easing function that accepts synchronization factor instead of milliseconds. That means:</p>
+<p><code>1</code> = immediate, no animation
+<code>0</code> = infinitely long animation</p>
+<h3>elasticBounds</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Whether to stretch SLIDEE position limits when dragging past FRAME boundaries.</p>
+<h3>interactive</h3>
+<p>Type: <code>String</code>
+Default: <code>null</code></p>
+<p>Selector for elements that should be treated as interactive. Interactive elements don&#39;t initiate dragging. By default, Sly recognizes <code>input</code>, <code>button</code>, <code>select</code>, or a <code>textarea</code> elements as interactive. You can expand this pool by passing a selector into this option.</p>
+<hr>
+<h6>Scrollbar</h6>
+<hr>
+<h3>scrollBar</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Element to be used as a scrollbar. Scrollbar has to have one child that will represent the scrollbar handle. You can read more about exact requirements in the <a href="Markup.md">Markup section</a>.</p>
+<p>You can pass a selector string, a DOM element, or a jQuery object with element.</p>
+<h3>dragHandle</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Whether the scrollbar handle should be draggable (both mouse or touch events).</p>
+<h3>dynamicHandle</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Whether the scrollbar handle size should be automatically adjusted to represent the ratio between hidden and visible content. When disabled, the handle will stay as big as CSS styles made it.</p>
+<h3>minHandleSize</h3>
+<p>Type: <code>Integer</code>
+Default: <code>50</code></p>
+<p>Minimal allowed handle size in pixels when <code>dynamicHandle</code> is enabled.</p>
+<h3>clickBar</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Enables navigation by clicking on scrollbar.</p>
+<h3>syncSpeed</h3>
+<p>Type: <code>Integer</code>
+Default: <code>0.5</code></p>
+<p>When dragging the handle, this represents the synchronization animation speed. For this animation Sly uses non-duration based easing function that accepts synchronization factor instead of milliseconds. That means:</p>
+<p><code>1</code> = immediate, no animation
+<code>0</code> = infinitely long animation</p>
+<p>By default, <code>0.5</code> means that the synchronization will take 2-3 animation frames, enough for it to feel super responsive and smooth without the choppiness. Set it lower for lazy synchronization feel.</p>
+<hr>
+<h6>Pagesbar</h6>
+<hr>
+<h3>pagesBar</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Pass the element that will be used as a container for page items/buttons.</p>
+<p>You can pass a selector string, a DOM element, or a jQuery object with element.</p>
+<h3>activatePageOn</h3>
+<p>Type: <code>String</code>
+Default: <code>null</code></p>
+<p>Event name. When a page item receives this event, the corresponding page will be activated. You&#39;ll mostly want to set it to <code>click</code>. Leave <code>null</code> to disable activating pages by user interaction.</p>
+<h3>pageBuilder</h3>
+<p>Type: <code>Function</code>
+Default: <code>fn</code></p>
+<p>A function that returns an HTML for one page item. This function accepts page index (starting at 0) as its first argument, and receives the current Sly instance object as its <code>this</code> value. The default function looks like this:</p>
+<pre><code class="language-js">pageBuilder: function (index) {
+    return &#39;&lt;li&gt;&#39; + (index + 1) + &#39;&lt;/li&gt;&#39;;
+},</code></pre>
+<hr>
+<h6>Navigation buttons</h6>
+<hr>
+<p>All of the navigation button options are essentially just a convenience features, and could be easily replicated by <a href="Methods.md">Sly methods</a>.</p>
+<h3>forward</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Selector string, DOM element, or a jQuery object with element for forward button.</p>
+<p>Forward button initiates continuous movement forwards on <code>mousedown</code>, and stops the movement on <code>mouseup</code>.</p>
+<h3>backward</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Selector string, DOM element, or a jQuery object with element for backward button.</p>
+<p>Backward button initiates continuous movement backwards on <code>mousedown</code>, and stops the movement on <code>mouseup</code>.</p>
+<h3>prev</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Selector string, DOM element, or a jQuery object with element for previous item button.</p>
+<h3>next</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Selector string, DOM element, or a jQuery object with element for next item button.</p>
+<h3>prevPage</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Selector string, DOM element, or a jQuery object with element for previous page button.</p>
+<h3>nextPage</h3>
+<p>Type: <code>Mixed</code>
+Default: <code>null</code></p>
+<p>Selector string, DOM element, or a jQuery object with element for next page button.</p>
+<hr>
+<h6>Automated cycling</h6>
+<hr>
+<h3>cycleBy</h3>
+<p>Type: <code>String</code>
+Default: <code>null</code></p>
+<p>Activates automated cycling. Can be:</p>
+<ul>
+<li><strong>items</strong> - for cycling by items</li>
+<li><strong>pages</strong> - for cycling by pages</li>
+</ul>
+<h3>cycleInterval</h3>
+<p>Type: <code>Integer</code>
+Default: <code>5000</code></p>
+<p>Delay between cycles in milliseconds.</p>
+<h3>pauseOnHover</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>Whether to pause the cycling while the mouse is hovering over the FRAME.</p>
+<h3>startPaused</h3>
+<p>Type: <code>Boolean</code>
+Default: <code>false</code></p>
+<p>When <code>cycleBy</code> is enabled, this will start the Sly in paused mode.</p>
+<hr>
+<h6>Mixed options</h6>
+<hr>
+<h3>moveBy</h3>
+<p>Type: <code>Integer</code>
+Default: <code>300</code></p>
+<p>Default speed in pixels per second used by forward &amp; backward buttons.</p>
+<h3>speed</h3>
+<p>Type: <code>Integer</code>
+Default: <code>0</code></p>
+<p>Speed of duration based (tweening) animations in milliseconds.</p>
+<h3>easing</h3>
+<p>Type: <code>String</code>
+Default: <code>swing</code></p>
+<p>Easing function for duration based (tweening) animations. Default build in functions are <code>linear</code> &amp; <code>swing</code>. For more, install the <a href="http://gsgd.co.uk/sandbox/jquery/easing/">jQuery Easing Plugin</a>.</p>
+<h3>startAt</h3>
+<p>Type: <code>Integer|null</code>
+Default: <code>null</code></p>
+<p>Offset in pixels to start Sly at. In item based navigations, this is an item index starting at <code>0</code>.</p>
+<p>For example, when you have <code>startAt: 300</code>: In non-item based navigation, this says &quot;move SLIDEE 300 pixels from the start on load&quot;. In item based navigation, this says &quot;activated 300th item on Sly load, and place it at the start of the FRAME in basic, or center of the FRAME in centered navigation&quot;.</p>
+<h3>keyboardNavBy</h3>
+<p>Type: <code>String</code>
+Default: <code>null</code></p>
+<p>Enable keyboard navigation. Can be:</p>
+<ul>
+<li><strong>items</strong> for navigation by items</li>
+<li><strong>pages</strong> for navigation by pages</li>
+</ul>
+<p>In vertical mode, arrows up &amp; down will activate prev &amp; next page or item. In horizontal mode, the same happens, but with left &amp; right arrows.</p>
+<hr>
+<h6>Classes</h6>
+<hr>
+<p>Class names used on various elements to mark their state.</p>
+<h3>draggedClass</h3>
+<p>Type: <code>String</code>
+Default: <code>dragged</code></p>
+<p>Class added to scrollbar handle or SLIDEE when they are being dragged.</p>
+<h3>activeClass</h3>
+<p>Type: <code>String</code>
+Default: <code>active</code></p>
+<p>Class added to the active item, or page.</p>
+<h3>disabledClass</h3>
+<p>Type: <code>String</code>
+Default: <code>disabled</code></p>
+<p>Class added to buttons when they are disabled.</p>
+<p>Buttons are being disabled when there would be no action after pressing them. For example: the previous item button when the very first item is activated.</p>
+<p>If a button is a <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> element, it will also be marked with <code>disabled=&quot;disabled&quot;</code> attribute.</p>

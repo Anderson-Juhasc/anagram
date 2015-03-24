@@ -1,0 +1,84 @@
+<h1>Markup</h1>
+<p><img src="http://i.imgur.com/iOOloMy.png" alt="Terminology"></p>
+<p><strong>Terminology:</strong> Sly is being applied to a <strong>FRAME</strong>. <strong>SLIDEE</strong> is a first child of a <strong>FRAME</strong>. The content/items are then inside of a <strong>SLIDEE</strong>.</p>
+<h2>HTML</h2>
+<p>In non-item based navigation, the content can be anything, and HTML would look something like this:</p>
+<pre><code class="language-html">&lt;div class=&quot;frame&quot;&gt;
+    &lt;div class=&quot;slidee&quot;&gt;
+        &lt;h2&gt;This in here...&lt;/h2&gt;
+        &lt;p&gt;...can be anything. &lt;strong&gt;Anything!&lt;/strong&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Otherwise in item-based navigation, you need a strict list of items, like:</p>
+<pre><code class="language-html">&lt;div class=&quot;frame&quot;&gt;
+    &lt;ul class=&quot;slidee&quot;&gt;
+        &lt;li&gt;&lt;/li&gt; // Item
+        &lt;li&gt;&lt;/li&gt; // Item
+        &lt;li&gt;&lt;/li&gt; // Item
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p>But the actual tags are not enforced. Dividitis is not discriminated :)</p>
+<h3>Scroll bar</h3>
+<p>The markup for a scroll bar is similar. You have an element that represents a scroll bar, and the handle is than its first child (doesn&#39;t have to have any class):</p>
+<pre><code class="language-html">&lt;div class=&quot;scrollbar&quot;&gt;
+    &lt;div class=&quot;handle&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>You then pass the element with <code>id=&quot;scrollbar&quot;</code> into the <code>scrollBar</code> option.</p>
+<h2>Styling elements</h2>
+<p>There are a few rules you should follow:</p>
+<ul>
+<li>FRAME should have no padding in a correspondent Sly direction.</li>
+<li>SLIDEE should have no margin in a correspondent Sly direction.</li>
+</ul>
+<p>In other words, if you enable horizontal mode, FRAME element should have no padding top &amp; bottom, while SLIDEE should have no margin top &amp; bottom. The same applies in vertical mode, but for left &amp; right margins/padding.</p>
+<p>In item based navigation, you can apply padding to SLIDEE, or margins to items (sly accounts for this), but do not use any other units than <strong>pixels</strong>, or you&#39;ll bork things.</p>
+<h3>Horizontal non-item based navigation!</h3>
+<p>In item based navigation, Sly sums up the sizes of all items, and re-sizes the SLIDEE to contain all of them. This is necessary in horizontal mode, because SLIDEE element otherwise won&#39;t overflow FRAME horizontally without being manually forced to, which would result into SLIDEE size equal FRAME size, and no scrolling &amp; broken Sly.</p>
+<p>In non-item based navigation, this doesn&#39;t happen. Content in such navigation can be anything of any layout, therefore Sly has no way of determining the final width of a SLIDEE.</p>
+<p>This is not a problem in vertical mode, as height of a SLIDEE is re-sized automatically depending on a content.</p>
+<p>However, in horizontal non-item based navigation (<code>itemNav: 0</code>), you have to set the width of a SLIDEE manually, otherwise SLIDEE size will always equal FRAME size, which means that there is nowhere to scroll.</p>
+<h3>Examples</h3>
+<p>Horizontal item based navigation:</p>
+<pre><code class="language-css">.frame { width: 100%; height: 160px; padding: 0; }
+.frame .slidee { margin: 0; padding: 0; height: 100%; list-style: none; }
+.frame .slidee li { float: left; margin: 0 5px 0 0; padding: 0; width: 120px; height: 100%; }</code></pre>
+<p>Vertical item based navigation:</p>
+<pre><code class="language-css">.frame { padding: 0; width: 300px; height: 400px; }
+.frame .slidee { margin: 0; padding: 0; width: 100%; list-style: none; }
+.frame .slidee li { float: left; margin: 0 0 5px 0; padding: 0; width: 100%; height: 100px; }</code></pre>
+<p>Vertical non-item based navigation:</p>
+<p>In this example <code>.slidee</code> is just a <code>div</code> and its content is whatever you want it to be.</p>
+<pre><code class="language-css">.frame { padding: 0; width: 300px; height: 400px; }
+.frame .slidee { margin: 0; padding: 1em; }</code></pre>
+<p>The example for horizontal non-item based navigation doesn&#39;t exist. Read why <a href="#horizontal-non-item-based-navigation">above</a>.</p>
+<h3>Styling scrollbar</h3>
+<p>When styling a scroll bar &amp; handle, you should follow the same rules as styling FRAME &amp; SLIDEE:</p>
+<ul>
+<li>Scroll bar should have no padding in a correspondent Sly direction.</li>
+<li>Handle should have no margin in a correspondent Sly direction.</li>
+</ul>
+<p>In other words, if you enable horizontal mode, scroll bar element should have no padding top &amp; bottom, while handle should have no margin top &amp; bottom. The same applies in vertical mode, but for left &amp; right margins/padding.</p>
+<h3>Examples</h3>
+<p>Scrollbar for horizontal navigation:</p>
+<pre><code class="language-css">.scrollbar { width: 100%; height: 10px; }
+.scrollbar .handle {
+    width: 100px; /* overriden if dynamicHandle: 1 */
+    height: 100%;
+    background: #222;
+}</code></pre>
+<p>Scrollbar for vertical navigation:</p>
+<pre><code class="language-css">.scrollbar { width: 10px; height: 400px; }
+.scrollbar .handle {
+    width: 100%;
+    height: 100px; /* overriden if dynamicHandle: 1 */
+    background: #222;
+}</code></pre>
+<h2>Notable behaviors</h2>
+<ul>
+<li><p>When using item based navigation, you can go wild with your items. Each one can be of different size, and have different margins &amp; paddings. Sly is smart, and can figure it out :)</p>
+</li>
+<li><p>When <strong>forceCentered</strong> item navigation is used, every item is considered to be a separate page. That&#39;s because pages in this context don&#39;t make sense, so Sly creates a page button for each item instead. Also, the <strong>nextPage</strong> &amp; <strong>prevPage</strong> methods &amp; buttons in this case do the exact same thing as <strong>next</strong> &amp; <strong>prev</strong> methods &amp; buttons.</p>
+</li>
+<li><p>When margin of a first item (<code>margin-top</code> for vertical, <code>margin-left</code> for horizontal) is <code>0</code>, the last margin of last item is ignored, and SLIDEE won&#39;t go past the last item border-box. That&#39;s so you don&#39;t have to fix last item margins with <code>li:last-child { margin-right: 0; }</code>, or a custom <code>.last-item</code> class to support older browsers when you want only spaces between items, but not between first/last item and a FRAME border.</p>
+</li>
+</ul>

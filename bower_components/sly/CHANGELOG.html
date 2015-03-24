@@ -1,0 +1,217 @@
+<h1>Changelog</h1>
+<p><strong>1.4.3</strong> :: <em>10th Mar 2015</em></p>
+<ul>
+<li>Improved <code>scrollHijack</code> logic.</li>
+<li>Fixed <code>scrollHijack</code> value being ignored and instead a fixed <code>300</code> was used.</li>
+</ul>
+<p><strong>1.4.2</strong> :: <em>9th Mar 2015</em></p>
+<ul>
+<li>Fixed <code>scrollHijack</code> and <code>scrollTrap</code> options not working nicely together.</li>
+</ul>
+<p><strong>1.4.1</strong> :: <em>5th Mar 2015</em></p>
+<ul>
+<li>Fixed dragging somehow broken by previous commits.</li>
+</ul>
+<p><strong>1.4.0</strong> :: <em>5th Mar 2015</em></p>
+<ul>
+<li>Fixed broken <code>startAt</code>.</li>
+<li><code>startAt</code> is now optional, and resolves to <code>null</code> by default with no item being activated at the start.</li>
+<li>Fixed Sly breaking in <code>jQuery.noConflict()</code> mode.</li>
+<li>Fixed <code>.destroy()</code> method nuking <code>document</code> event listeners of other Sly instances. When you destroyed one Sly instance, keyboard navigation stopped working on all Sly instances.</li>
+<li>Fixed last item in horizontal navigation sometimes being placed on a new line. <em> **</em>important note<em>*</em></li>
+<li>Fixed dragging termination (when draggin in direction opposite to Sly&#39;s) breaking <code>activateMiddle</code> functionality.</li>
+<li>Fixed buttons&#39;s disabled states sometimes not being updated.</li>
+</ul>
+<p>* <strong>IMPORTANT</strong> this was is possible only by retrieving item sizes with <code>getBoundingClientRect()</code> method, which is the only way how to get the element size with subpixel precision. This has a side effect of retrieving the item&#39;s rendered rectangle dimensions as opposed to layout dimensions. This means you can&#39;t apply CSS transforms to items anymore, as that changes element&#39;s rendered box dimensions and breaks Sly&#39;s item offsets. Apply transforms to item&#39;s children instead.</p>
+<p><strong>1.3.0</strong> :: <em>30th Nov 2014</em></p>
+<ul>
+<li><code>destroy()</code> now correctly restores previous element styles.</li>
+<li>Implemented <code>scrollTrap</code> option.</li>
+</ul>
+<p><strong>1.2.7</strong> :: <em>30th Oct 2014</em></p>
+<ul>
+<li>Prevent native image dragging in Firefox when Sly dragging is active.</li>
+</ul>
+<p><strong>1.2.6</strong> :: <em>11th Oct 2014</em></p>
+<ul>
+<li>Fixed dragging navigation collisions in nested Sly instances with crossed directions.</li>
+</ul>
+<p><strong>1.2.5</strong> :: <em>28th Aug 2014</em></p>
+<ul>
+<li>Dragging overhaul. Fixes a lot of issues with touch dragging on mobile devices. You can test the difference here: <a href="http://fiddle.jshell.net/0duf5h6b/show/light/">http://fiddle.jshell.net/0duf5h6b/show/light/</a></li>
+</ul>
+<p><strong>1.2.4</strong> :: <em>19th Aug 2014</em></p>
+<ul>
+<li>Implemented protection against hijacking global scrolling.</li>
+<li>Moved scrolling implementation from <code>mousewheel</code> + <code>DOMMouseScroll</code> to <code>wheel</code> event with fallback to <code>mousewheel</code> in IE8-. Introduced Chrome 31+ requirement if you want to use mouse wheel/trackpad scrolling.</li>
+</ul>
+<p><strong>1.2.3</strong> :: <em>9th Feb 2014</em></p>
+<ul>
+<li>Fixed the need to click on an item twice to activate it after dragging finished from different target.</li>
+</ul>
+<p><strong>1.2.2</strong> :: <em>18th Nov 2013</em></p>
+<ul>
+<li>Fixed Sly locking perpendicular touch scrolling.</li>
+</ul>
+<p><strong>1.2.1</strong> :: <em>12th Nov 2013</em></p>
+<ul>
+<li>Fixed page generation for item-based navigation.</li>
+</ul>
+<p><strong>1.2.0</strong> :: <em>31st Oct 2013</em></p>
+<ul>
+<li>Implemented scrolling speed normalization between different browsers and input devices. Scrolling speed with mouse or MacBook trackpads should feel similar now.</li>
+<li>Dragging initiation optimized to be more responsive. You no longer need to drag a certain destination before dragging kicks in.</li>
+<li>Sly&#39;ll now refuse to initiate dragging if source element is interactive. Meaning if you mousedown/touchstart on an <code>input</code>, <code>button</code>, <code>textarea</code>, or a <code>select</code> element, dragging won&#39;t start.</li>
+<li>Added <code>interactive</code> option. It is a selector to extend the pool of what should be considered an <em>interactive element</em>.</li>
+<li>Hand full of bug fixes.</li>
+</ul>
+<p><strong>1.1.0</strong> :: <em>10th Sep 2013</em></p>
+<ul>
+<li>New method <a href="https://github.com/Darsain/sly/wiki/Methods#one"><code>.one()</code></a>, binding events that should be executed only once.</li>
+<li>Exposing <a href="https://github.com/Darsain/sly/wiki/Properties#slyinitialized"><code>sly.initialized</code></a> flag.</li>
+<li>Fixed duplicate execution of some events.</li>
+<li>Fixed executing undefined callbacks when one of the prior callbacks in the queue unbound itself.</li>
+</ul>
+<p><strong>1.0.2</strong> :: <em>4th Aug 2013</em></p>
+<ul>
+<li>Fixed dragEnd to correctly fire moveEnd event.</li>
+<li>Fixed infinite caused by dragEnd when <code>speed: 0</code>.</li>
+<li>Fixed mousewheel scrolling not working when jquery.mousewheel plugin is present.</li>
+</ul>
+<p><strong>1.0.1</strong> :: <em>8th Jun 2013</em></p>
+<ul>
+<li>Implemented direction dependent dragging (horizontal Sly won&#39;t disable vertical scrolling on touch devices).</li>
+<li>Iteration on unresponsive taps when <code>touchDragging</code> is enabled. <strong>Needs feedback!</strong></li>
+<li>Optimized &amp; improved <code>moveBy</code> method. It is now way faster, and can be called super often. Useful when you want to control <code>moveBy()</code> speed by mouse cursor position.</li>
+<li><code>moveBy</code> method now correctly triggers <code>moveStart</code> &amp; <code>moveEnd</code> events.</li>
+<li>Fixed bugged handle resulting into bugged everything in one edge case of forceCentered navigation.</li>
+<li>Fixed incorrect styles being applied to FRAME &amp; SLIDEE when 2D transforms are supported, but 3D are not.</li>
+<li>Fixed handle not moving in IE8 + parallax mode.</li>
+<li>Fixed some positioning functions not accepting <code>immediate</code> argument.</li>
+<li>Fixed <code>add()</code> method not working in IE8.</li>
+<li>Fixed <code>load()</code> sometimes generating a redundant page item.</li>
+<li>Fixed dragging release sometimes not un-binding event prevention handlers.</li>
+<li>Added dynamic native FRAME scroll reset. Native scroll on FRAME element happenes sometimes in some browsers, and shifts the SLIDEE position. Sly now listens for <code>scroll</code> event on FRAME, and resets <code>frame.scrollLeft</code> &amp; <code>frame.scrollTop</code> to <code>0</code> when that happens.</li>
+</ul>
+<p><strong>1.0.0</strong> :: <em>24th Mar 2013</em></p>
+<ul>
+<li>Quite a hand full of bug fixes.</li>
+<li><strong>itemNav</strong> split to multiple options to provide more control.</li>
+<li>New options <strong>activateOn</strong> &amp; <strong>activatePageOn</strong> for more control over item/pages activation.</li>
+<li><strong>dragging</strong> split to <strong>mouseDragging</strong> &amp; <strong>touchDragging</strong> to provide more control.</li>
+<li>New options <strong>releaseSwing</strong> &amp; <strong>swingSpeed</strong> for dragging navigation.</li>
+<li>Some option name changes for better semantics.</li>
+<li><code>.cycle()</code> method changed to <code>.resume()</code>.</li>
+<li><code>cycleStart</code> &amp; <code>cyclePause</code> events renamed to <code>resume</code> &amp; <code>pause</code>.</li>
+<li>Implemented continuous movement navigation type.</li>
+<li>New methods <code>.moveBy()</code> &amp; <code>.stop()</code> for controlling the continuous movement.</li>
+<li>New button options <code>forward</code> &amp; <code>backward</code> utilizing the continuous movement.</li>
+<li>New item manipulation methods <code>.add()</code>, <code>.remove()</code>, <code>.moveAfter()</code>, and <code>.moveBefore()</code>.</li>
+<li>Exposed a lot of Sly object properties, now documented on <a href="https://github.com/Darsain/sly/wiki/Properties">Properties page</a>.</li>
+<li>Event callback arguments API change.</li>
+<li>New option <strong>itemSelector</strong>.</li>
+<li><code>new Sly()</code> now accepts selector as 1st argument.</li>
+</ul>
+<h3>Release candidates</h3>
+<hr>
+<p><strong>1.0.0-rc.6</strong> :: <em>6th Feb 2013</em></p>
+<p>Well, this is embarrassing. It turns out, translateX/Y on its own doesn&#39;t trigger GPU acceleration. Which means that
+improvements in <strong>0.10.0</strong> were so awesome that it looked like it did anyway :) Changes made in this release:</p>
+<ul>
+<li>Finally enabling GPU acceleration in browsers that support it.</li>
+<li>Sets correct required properties on init.</li>
+<li>Minor bug fix in IE8 and lower.</li>
+</ul>
+<p>This is the difference in repaint times when Sly is animating an area with 1080p resolution full of images.</p>
+<p><img src="http://i.imgur.com/nk5EhNF.png" alt="Repaints before after"></p>
+<p><strong>1.0.0-rc.5</strong> :: <em>27th Jan 2013</em></p>
+<ul>
+<li>Smarter division into pages for item based navigations.</li>
+<li>Bug fixes.</li>
+</ul>
+<p><strong>1.0.0-rc.4</strong> :: <em>25th Jan 2013</em></p>
+<ul>
+<li>Fixed animated cycling broken in previous version. Whoops.</li>
+</ul>
+<p><strong>1.0.0-rc.3</strong> :: <em>25th Jan 2013</em></p>
+<ul>
+<li>Position object min/max property names renamed to start/end.</li>
+<li>Implemented <code>immediate</code> boolean argument for positioning methods. When <code>true</code>, SLIDEE will be re-positioned without animation.</li>
+<li>Bug fixes.</li>
+</ul>
+<p><strong>1.0.0-rc.2</strong> :: <em>17th Jan 2013</em></p>
+<ul>
+<li>Item&#39;s position object returned from <code>.getPos()</code> method in non-item based navigation now extended with item <code>size</code> property.</li>
+</ul>
+<p><strong>1.0.0-rc.1</strong> :: <em>17th Jan 2013</em></p>
+<ul>
+<li>Added <code>sly.jquery.json</code> for jQuery plugins registry.</li>
+<li>Extended <code>.getPos()</code> method to accept <code>item</code> argument, and return the passed item&#39;s position object.</li>
+</ul>
+<p><strong>1.0.0-rc</strong> :: <em>15th Jan 2013</em></p>
+<ul>
+<li>Option <code>drag</code> renamed to <code>dragging</code>. I&#39;m sorry, ... my OCD.</li>
+<li>Restructured repository.</li>
+<li>Registered into Bower.</li>
+<li>Added proper build system with grunt.</li>
+</ul>
+<h3>Beta</h3>
+<hr>
+<p><strong>0.14.0</strong> :: <em>15th Jan 2013</em></p>
+<ul>
+<li>Implemented <a href="https://github.com/Darsain/sly/wiki/Parallax">Parallax API</a>.</li>
+<li>Increased path required for touch dragging initialization, so you can actually click items on touch devices when dragging is enabled.</li>
+</ul>
+<p><strong>0.13.1</strong> :: <em>6th Jan 2013</em></p>
+<ul>
+<li>Fixed jQuery&#39;s <code>event.which</code> not normalizing click events in &lt;IE9, which basically disabled activation of items by clicking on them.</li>
+</ul>
+<p><strong>0.13.0</strong> :: <em>5th Jan 2013</em></p>
+<ul>
+<li>Implemented touch events support.</li>
+<li>Added <code>.slyTo()</code> and <code>.slideBy()</code> methods for non-item based navigations.</li>
+<li>Added <code>.getPos()</code> and <code>.getRel()</code> methods for retrieving the current Sly state.</li>
+<li>Fixed <code>.destroy()</code> method not resetting everything.</li>
+<li>Minor speed optimization when removing <code>activeClass</code> from items.</li>
+</ul>
+<p><strong>0.12.0</strong> :: <em>4th Jan 2013</em></p>
+<ul>
+<li>New callbacks API providing better event driven interface than DOM events.</li>
+<li>New methods for callbacks API: <code>.on()</code> &amp; <code>.off()</code>.</li>
+<li>Removed <code>returnInstance</code> argument. It is being replaced by a proper <code>Sly</code> class call alternative.</li>
+<li>Added <code>callbacksMap</code> argument to bind callbacks along with a plugin call before anything gets executed.</li>
+<li>Options <code>keyboardNav</code> &amp; <code>keyboardNavByPages</code> merged into <code>keyboardNavBy</code> with possible values: <code>items</code>, or <code>pages</code>.</li>
+<li>New option <code>domEvents</code> that controls whether Sly triggers DOM events or not. Disabled by default.</li>
+</ul>
+<p><strong>0.11.0</strong> :: <em>22nd Dec 2012</em></p>
+<ul>
+<li>Added navigation by clicking on scrollbar.</li>
+<li>New option <code>clickBar</code> that enables this feature - disabled by default.</li>
+</ul>
+<p><strong>0.10.0</strong> :: <em>21st Dec 2012</em></p>
+<ul>
+<li>Minor plugin rewrite with huge performance improvements.</li>
+<li>Implemented custom animation rendering with requestAnimationFrame (ditching jQuery.animate altogether).</li>
+<li>Support for GPU accelerated animations in browsers that support it (using translateX/Y instead of absolute positioning).</li>
+<li>Using tweesing instead of tweening animation when dragging scrollbar handle or SLIDEE.</li>
+<li>New option <code>syncFactor</code> controlling handle =&gt; SLIDEE synchronization tweesing speed.</li>
+</ul>
+<p>Sly is now super smooth!</p>
+<p><img src="http://i.imgur.com/gx4RP.png" alt="FPS before after"></p>
+<p><strong>0.9.7</strong> :: <em>31st Oct 2012</em></p>
+<ul>
+<li>Tweaks, bug fixes, and improved cycling API.</li>
+</ul>
+<p><strong>0.9.6</strong> :: <em>19th Jul 2012</em></p>
+<ul>
+<li>Added <code>.set()</code> method for changing options in runtime. Very limited though...</li>
+</ul>
+<p><strong>0.9.1-0.9.5</strong> :: <em>13th Feb 2012</em> ~ <em>19th Jul 2012</em></p>
+<ul>
+<li>Goofing around, tweaking and fixing.</li>
+<li>Implemented automated cycling.</li>
+</ul>
+<p><strong>0.9.0</strong> :: <em>13th Feb 2012</em></p>
+<ul>
+<li>First public version.</li>
+</ul>

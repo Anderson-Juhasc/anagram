@@ -1,0 +1,59 @@
+<h1><a href="http://darsa.in/sly">Sly</a></h1>
+<p>JavaScript library for one-directional scrolling with item based navigation support.</p>
+<p>Sly supports navigation with:</p>
+<ul>
+<li>mouse wheel scrolling</li>
+<li>scrollbar (dragging the handle or clicking on scrollbar)</li>
+<li>pages bar</li>
+<li>various navigation buttons</li>
+<li>content dragging with mouse or touch</li>
+<li>automated cycling by items or pages</li>
+<li>lots of super useful methods</li>
+</ul>
+<p>... and has a powerful &amp; developer friendly API!</p>
+<p>That&#39;s all build around a custom <a href="http://i.imgur.com/nszjJBZ.png">highly optimized animation rendering</a> with
+requestAnimationFrame, and GPU accelerated positioning with fallbacks for browsers that don&#39;t support it.</p>
+<h4>Dependencies</h4>
+<ul>
+<li>jQuery 1.7+</li>
+</ul>
+<h4>Compatibility</h4>
+<p>Works everywhere, even in IE6+ abominations, but that is a complete accident :) IE 6-7 are not officially supported.</p>
+<h3><a href="https://groups.google.com/d/forum/sly-js">Forum</a></h3>
+<p>Forum is for questions. Issues are for bug reports and feature requests. Don&#39;t mix the two :)</p>
+<h2>Usage</h2>
+<p>Constructor:</p>
+<pre><code class="language-js">var options = {
+    horizontal: 1,
+    itemNav: &#39;basic&#39;,
+    speed: 300,
+    mouseDragging: 1,
+    touchDragging: 1
+};
+var frame = new Sly(&#39;#frame&#39;, options).init();</code></pre>
+<p>jQuery proxy:</p>
+<pre><code class="language-js">var options = {
+    horizontal: 1,
+    itemNav: &#39;basic&#39;,
+    speed: 300,
+    mouseDragging: 1,
+    touchDragging: 1
+};
+$(&#39;#frame&#39;).sly(options);</code></pre>
+<p>jQuery proxy is good when you want to create an instance and forget about it. For anything more complex, like using methods, events, accessing instance properties, ... use the constructor and work with the instance directly.</p>
+<h2>Download</h2>
+<p>Latest stable release:</p>
+<ul>
+<li><a href="https://raw.github.com/darsain/sly/master/dist/sly.min.js">Production <code>sly.min.js</code></a> - 16KB, 7KB gzipped</li>
+<li><a href="https://raw.github.com/darsain/sly/master/dist/sly.js">Development <code>sly.js</code></a> - 55KB</li>
+</ul>
+<p>When isolating issues on jsfiddle, you can use this URL:</p>
+<ul>
+<li><a href="http://darsain.github.io/sly/js/sly.min.js"><a href="http://darsain.github.io/sly/js/sly.min.js">http://darsain.github.io/sly/js/sly.min.js</a></a></li>
+</ul>
+<h2>Documentation</h2>
+<p>Can be found in the <a href="https://github.com/darsain/sly/tree/master/docs">docs</a> directory.</p>
+<h2>Contributing</h2>
+<p>Please, read the <a href="CONTRIBUTING.md">Contributing Guidelines</a> for this project.</p>
+<h2>License</h2>
+<p>MIT</p>

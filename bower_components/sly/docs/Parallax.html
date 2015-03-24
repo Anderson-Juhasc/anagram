@@ -1,0 +1,44 @@
+<h1>Parallax</h1>
+<p>Sly parallax mode provides a great interface into which you can chain your parallax animation frame renderer. You can effortlessly utilize a lot of Sly&#39;s features, like animation easing functions, mouse/touch dragging, mouse wheel scrolling, scrollbar rendering, optimized requestAnimationFrame based animation rendering, ... and focus only on writing a function that will render one frame of your screen.</p>
+<h2>Calling</h2>
+<p>You initiate parallax mode by passing an integer specifying the top scroll value as the first argument:</p>
+<pre><code class="language-js">var parallax = new Sly(10000, options);</code></pre>
+<h2>Usage</h2>
+<p>You&#39;ll generally want to bind your animation renderer to the <code>move</code> event. This event is directly chained to the requestAnimationFrame, and triggered on every animation frame when something is in motion, like user is scrolling, or dragging the handle or content.</p>
+<pre><code class="language-js">// Create a new Sly object in parallax mode
+var parallax = new Sly(10000, {
+    scrollSource: document, // Binds scroll listeners to `document`
+    scrollBy: 100, // Scroll by 100 per `mousewheel` event
+
+    dragSource: document, // Binds dragging listeners to `document`
+    mouseDragging: 1, // Enables dragging by mouse
+    touchDragging: 1, // Enables dragging by touch
+    releaseSwing: 1,  // Enables release swing easing
+
+    scrollBar: &#39;#scrollbar&#39;, // Attaches a scroll bar
+
+    speed: 600, // Duration based (tweening) animations speed in milliseconds
+    easing: &#39;easeOutExpo&#39; // Tweening animations easing function
+});
+
+// Register an animation renderer
+parallax.on(&#39;load move&#39;, renderFrame);
+
+// Initiate the Sly object
+parallax.init();</code></pre>
+<p>The <code>renderFrame</code> function receives the Sly object as its <code>this</code> value that you use to access the position object, which is all you need to render one frame:</p>
+<pre><code class="language-js">function renderFrame(eventName) {
+    this.pos.start; // Start position: `0`
+    this.pos.cur; // Current position
+    this.pos.dest; // In animation, this is the destination position
+    this.pos.end; // End position: `10000` in this example
+    // ... and now do something with it
+}</code></pre>
+<h3><a href="http://darsa.in/sly/examples/parallax.html">Parallax mode example</a></h3>
+<h2>Features disabled in parallax mode</h2>
+<ul>
+<li>Item navigation (duh).</li>
+<li>Paging and pages bar.</li>
+<li>Animated cycling.</li>
+<li>Dynamic scrollbar handle.</li>
+</ul>

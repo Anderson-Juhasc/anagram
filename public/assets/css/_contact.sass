@@ -1,42 +1,68 @@
 .contact
-  background: #f6f6f6
+  background: #f6f6f6 url(../img/contact-bg.png) no-repeat center
+  background-attachment: fixed
+  background-clip: border-box
+  //background-size: cover
+
+.contact__border
+  background: rgba(0,187,255,1);
+  background: -moz-linear-gradient(left, rgba(0,187,255,1) 0%, rgba(0,187,255,1) 65%, rgba(255,47,120,1) 65%, rgba(255,47,120,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,187,255,1)), color-stop(65%, rgba(0,187,255,1)), color-stop(65%, rgba(255,47,120,1)), color-stop(100%, rgba(255,47,120,1)));
+  background: -webkit-linear-gradient(left, rgba(0,187,255,1) 0%, rgba(0,187,255,1) 65%, rgba(255,47,120,1) 65%, rgba(255,47,120,1) 100%);
+  background: -o-linear-gradient(left, rgba(0,187,255,1) 0%, rgba(0,187,255,1) 65%, rgba(255,47,120,1) 65%, rgba(255,47,120,1) 100%);
+  background: -ms-linear-gradient(left, rgba(0,187,255,1) 0%, rgba(0,187,255,1) 65%, rgba(255,47,120,1) 65%, rgba(255,47,120,1) 100%);
+  background: linear-gradient(to right, rgba(0,187,255,1) 0%, rgba(0,187,255,1) 65%, rgba(255,47,120,1) 65%, rgba(255,47,120,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00bbff', endColorstr='#ff2f78', GradientType=1 );
+  height: 5px
+  width: 100%
 
 .contact__grid
   +cf
   +media-query(desk)
-    margin-left: -24px
+    display: table
+    width: 100%
 
 .contact__cell
-  padding: 48px 0
   +media-query(desk)
-    display: inline-block
-    margin-right: -0.28em
-    padding-left: 24px
+    display: table-cell
     vertical-align: top
 
 .contact__cell--main
   margin-bottom: 24px
+  padding: 48px 0
   +media-query(desk)
     margin-bottom: 0
     width: 65%
 
 .contact__cell--aside
+  background: #fff
+  margin: 0 -18px
+  padding: 48px 24px
+  a
+    color: #ff2f79
+    text-decoration: underline
+  +media-query(lap)
+    margin: 0 -24px
   +media-query(desk)
+    margin: 0
     width: 35%
 
 .contact__title
   font-size: 35px
   line-height: 1.1
 
+.contact__subtitle
+  font-size: 22px
+
 .contact-form
   list-style: none
-  margin: 0 0 18px
+  margin: 0
   > li
     margin-bottom: 18px
     &:last-child
       margin-bottom: 0
   +media-query(desk)
-    width: 60%
+    width: 55%
 
 .contact-form__label
   display: block
@@ -44,3 +70,22 @@
 
 .contact-action
   text-align: right
+
+.contact-aside-grid
+  +cf
+  +media-query(lap)
+    margin-left: -24px
+
+.contact-aside-cell
+  +media-query(lap)
+    float: left
+    padding-left: 24px
+    width: 50%
+  +media-query(desk)
+    margin-bottom: 24px
+    width: 100%
+
+.contact__list
+  list-style: none
+  line-height: 1.5
+  margin: 0

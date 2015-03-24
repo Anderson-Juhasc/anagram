@@ -4,12 +4,14 @@
 .products__grid
   +cf
   +media-query(desk)
-    margin-left: -24px
+    margin-left: -48px
 
 .products__cell
+  float: left
+  margin-bottom: 36px
+  width: 50%
   +media-query(desk)
-    float: left
-    padding-left: 24px
+    padding-left: 48px
     width: 25%
 
 .products__title
@@ -18,14 +20,24 @@
 
 .products-item__title
   font-size: 18px
+  padding-left: 8px
+  +media-query(desk)
+    padding-left: 0
 
 .products-item__list
   font-size: 13px
   list-style: none
   margin-left: 0
+  padding-left: 8px
   text-transform: uppercase
   > li
     > a
       color: #7b7b7b
       &:hover
         color: #ff2f79
+  +media-query(desk)
+    padding-left: 0
+
+.products-item__more
+  +media-query(desk)
+    margin-left: -6px

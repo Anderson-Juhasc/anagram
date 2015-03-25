@@ -6,13 +6,15 @@
 
 .balloons__img
   text-align: center
+  margin-bottom: 24px
   > img
     display: inline-block
   +media-query(desk)
     display: inline-block
+    margin-bottom: 0
     margin-right: -0.28em
     padding-left: 24px
-    vertical-align: top
+    vertical-align: middle
     width: 40%
 
 .balloons__body
@@ -20,9 +22,12 @@
     display: inline-block
     margin-right: -0.28em
     padding-left: 24px
-    vertical-align: top
+    vertical-align: middle
     width: 60%
 
 .balloons__title
   font-size: 35px
   line-height: 1.1
+
+.balloons__scroller
+  font-size: 13px

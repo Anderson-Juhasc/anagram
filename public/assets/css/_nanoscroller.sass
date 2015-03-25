@@ -1,0 +1,55 @@
+//
+// nanoScrollerJS (Sass)
+// --------------------------------------------------
+/** initial setup *
+$nanoClass: "nano"
+$paneClass: "nano-pane"
+$sliderClass: "nano-slider"
+$contentClass: "nano-content"
+
+.#{$nanoClass}
+  width: 100%
+  height: 240px
+  position: relative
+  overflow: hidden
+  .#{$contentClass}
+    padding-right: 36px
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    overflow: scroll
+    &:focus
+      outline: thin dotted
+    &::-webkit-scrollbar
+      display: none
+    > :last-child
+      margin-bottom: 0
+  > .#{$paneClass}
+    width: 8px
+    background: #15c5fe
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    -webkit-transition: .2s
+    -moz-transition: .2s
+    -o-transition: .2s
+    transition: .2s
+    visibility: hidden\9
+    // Target only IE7 and IE8 with this hack
+    > .#{$sliderClass}
+      background: #ff2f79
+      position: relative
+
+.has-scrollbar > .#{$contentClass}::-webkit-scrollbar
+  display: block
+
+.#{$paneClass}
+  .#{$nanoClass}:hover > &,
+  &.active,
+  &.flashed
+    visibility: visible\9
+    // Target only IE7 and IE8 with this hack
+

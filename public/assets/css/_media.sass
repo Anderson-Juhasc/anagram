@@ -6,10 +6,7 @@
   position: relative
 
 .media-action
-  height: 100px
-  position: absolute
   top: 0
-  width: 100%
   z-index: 333
   > a
     display: block
@@ -23,17 +20,27 @@
 
 .media-action__prev
   background: url(../img/media_prev.png) no-repeat center
-  left: 0
+  left: 18px
+  +media-query(lap)
+    left: 24px
+  +media-query(desk)
+    left: 0
 
 .media-action__next
   background: url(../img/media_next.png) no-repeat center
-  right: 0
+  right: 18px
+  +media-query(lap)
+    right: 24px
+  +media-query(desk)
+    right: 0
 
 .media__title
   line-height: 1
   text-align: center
 
 .media-sly
+  height: 110px
+  overflow: hidden
   margin: 0 60px
 
 .media-sly-nav
@@ -45,7 +52,9 @@
   z-index: 444
   > li
     float: left
-    margin-right: 24px
+    margin-right: 12px
+    height: 110px
+    width: 110px
     &:last-child
       margin-right: 0
 

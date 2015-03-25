@@ -1,17 +1,20 @@
 .products
-  padding: 48px 0
+  padding: 48px 0 12px
+  text-align: center
+  +media-query(desk)
+    text-align: left
 
 .products__grid
   +cf
   +media-query(desk)
-    margin-left: -48px
+    margin-left: -72px
 
 .products__cell
   float: left
   margin-bottom: 36px
   width: 50%
   +media-query(desk)
-    padding-left: 48px
+    padding-left: 72px
     width: 25%
 
 .products__title

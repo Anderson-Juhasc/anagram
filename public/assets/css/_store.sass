@@ -1,12 +1,13 @@
 .store
-  background: url(../img/store-bg.png) no-repeat bottom right
-  background-attachment: fixed
-  background-clip: border-box
   padding: 48px 0
   font-size: 16px
   text-align: center
   +media-query(lap)
     font-size: 20px
+  +media-query(desk)
+    background: url(../img/store-bg.png) no-repeat bottom right
+    background-attachment: fixed
+    background-clip: border-box
 
 .store__title
   font-size: 35px

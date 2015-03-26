@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- .head -->
-    <header class="head">
+    <header class="head" data-0="background-position:0px 0px;" data-100000="background-position:0px -50000px;">
         <!-- .wrapper -->
         <div class="wrapper">
             <!-- .head-logo -->
@@ -41,25 +41,25 @@
                 <!-- .head-nav-list -->
                 <ul class="head-nav-list">
                     <li>
-                        <a href="">Sobre</a>
+                        <a href="#about">Sobre</a>
                     </li>
                     <li>
-                        <a href="">Balões Metalizados</a>
+                        <a href="#balloons">Balões Metalizados</a>
                     </li>
                     <li>
-                        <a href="">Produtos</a>
+                        <a href="#products">Produtos</a>
                     </li>
                     <li>
-                        <a href="">Inspire-se</a>
+                        <a href="#store">Loja virtual</a>
                     </li>
                     <li>
-                        <a href="">Loja virtual</a>
+                        <a href="#map">Onde encontrar</a>
                     </li>
                     <li>
-                        <a href="">Onde encontrar</a>
+                        <a href="#inspired">Inspire-se</a>
                     </li>
                     <li>
-                        <a href="">Contato</a>
+                        <a href="#contact">Contato</a>
                     </li>
                 </ul>
                 <!-- /.head-nav-list -->
@@ -73,7 +73,7 @@
     <!-- .wrapper -->
     <div class="wrapper">
         <!-- .about -->
-        <div class="about">
+        <div id="about" class="about">
             <!-- .about__body -->
             <div class="about__body">
                 <h2 class="about__title">
@@ -107,11 +107,11 @@
     <!-- .wrapper -->
     <div class="wrapper">
         <!-- .balloons -->
-        <div class="balloons">
+        <div id="balloons" class="balloons">
             <!-- .balloons__img -->
-            <div class="balloons__img">
+            <a href="" class="balloons__img">
                 <img src="assets/img/balloons-img.png" alt="" />
-            </div>
+            </a>
             <!-- /.balloons__img -->
 
             <!-- .balloons__body -->
@@ -141,7 +141,7 @@
     <!-- .wrapper -->
     <div class="wrapper">
         <!-- .products -->
-        <div class="products">
+        <div id="products" class="products">
             <h3 class="products__title pink">Produtos</h3>
 
             <!-- .products__grid -->
@@ -346,7 +346,6 @@
 
     <!-- .media -->
     <div id="media" class="media">
-
         <!-- .wrapper -->
         <div class="media__wrapper wrapper">
 
@@ -425,7 +424,7 @@
     <!-- /.media -->
 
     <!-- .store -->
-    <div class="store">
+    <div id="store" class="store" data-0="background-position:0px 0px;" data-100000="background-position:0px -50000px;">
         <!-- .wrapper -->
         <div class="wrapper store__wrapper">
             <h3 class="store__title darkblue">Loja Virtual</h3>
@@ -442,7 +441,7 @@
     <!-- /.store -->
 
     <!-- .map -->
-    <div class="map">
+    <div id="map" class="map">
         <!-- .map__head -->
         <div class="map__head">
             <!-- .wrapper -->
@@ -461,7 +460,7 @@
     <!-- /.map -->
 
     <!-- .inspired -->
-    <div class="inspired">
+    <div id="inspired" class="inspired">
         <div class="inspired__border"></div>
 
         <div class="inspired__table">
@@ -533,16 +532,21 @@
     <!-- /.gallery -->
 
     <!-- .contact -->
-    <div class="contact">
+    <div id="contact" class="contact" data-0="background-position:0px 0px;" data-100000="background-position:0px -50000px;">
         <!-- .contact__border -->
-        <div class="contact__border"></div>
+        <div class="contact__border">
+            <!-- .wrapper -->
+            <div class="wrapper">
+                <!-- .contact__border -->
+                <div class="contact__border"></div>
+                <!-- /.contact__border -->
+            </div>
+            <!-- /.wrapper -->
+        </div>
         <!-- /.contact__border -->
 
         <!-- .wrapper -->
         <div class="wrapper">
-            <!-- .contact__border -->
-            <div class="contact__border"></div>
-            <!-- /.contact__border -->
 
             <!-- .contact__grid -->
             <div class="contact__grid">
@@ -683,30 +687,102 @@
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/sly/dist/sly.min.js"></script>
+    <script src="bower_components/skrollr/dist/skrollr.min.js"></script>
+    <script src="bower_components/enquire/dist/enquire.min.js"></script>
     <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
-        // This example adds a marker to indicate the position
-        // of Bondi Beach in Sydney, Australia
-        function initialize() {
-          var mapOptions = {
-            zoom: 4,
-            center: new google.maps.LatLng(-33, 151)
-          }
-          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        // desktop
+        enquire.register("screen and (min-width: 1024px)", {
+            match : function() {
+                skrollr.init({
+                    forceHeight: false
+                });
+            }
+        });
 
-          var image = 'assets/img/icon-map.png';
-          var myLatLng = new google.maps.LatLng(-33.890542, 151.274856);
-          var beachMarker = new google.maps.Marker({
-              position: myLatLng,
-              map: map,
-              icon: image
-          });
+        // Define your locations: HTML content for the info window, latitude, longitude
+    var locations = [
+      ['Rua Ramos Batista, 198, Itaim Bibi, Sao Paulo, SP', -23.5924709, -46.684306],
+      ['Av. Paulista, 555, Sao Paulo, SP', -23.5680951, -46.648374],
+      ['Av. Indianopolis, 1234, Sao Paulo, SP', -23.6095017, -46.652058]
+    ];
+
+    // Setup the different icons and shadows
+    var icons = [
+      'assets/img/icon-map.png'
+    ];
+
+    var iconsLength = icons.length;
+
+    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+      zoom: 10,
+      scrollwheel: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: false,
+      streetViewControl: false,
+      panControl: false,
+      zoomControlOptions: {
+         position: google.maps.ControlPosition.LEFT_BOTTOM
+      }
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      maxWidth: 160
+    });
+
+    var markers = new Array();
+
+    var iconCounter = 0;
+
+    // Add the markers and infowindows to the map
+    for (var i = 0; i < locations.length; i++) {
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+        icon: icons[iconCounter]
+      });
+
+      markers.push(marker);
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
         }
+      })(marker, i));
 
-        google.maps.event.addDomListener(window, 'load', initialize);
+      iconCounter++;
+      // We only have a limited number of possible icon colors, so we may have to restart the counter
+      if(iconCounter >= iconsLength) {
+      	iconCounter = 0;
+      }
+    }
+
+    function autoCenter() {
+      //  Create a new viewpoint bound
+      var bounds = new google.maps.LatLngBounds();
+      //  Go through each...
+      for (var i = 0; i < markers.length; i++) {
+        bounds.extend(markers[i].position);
+      }
+      //  Fit these bounds to the map
+      map.fitBounds(bounds);
+    }
+    autoCenter();
 
         $(document).ready(function() {
+            $('a[href^="#"]').on('click',function (e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 1500, 'swing');
+            });
+
             $(".nano").nanoScroller();
 
             (function () {

@@ -2,6 +2,8 @@
   color: #fff
   padding: 64px 0
   text-align: center
+  +media-query(desk)
+    background: url(../img/head-bg.png)
 
 .head-logo
   display: inline-block
@@ -34,6 +36,10 @@
   text-align: left
   width: 70%
   +media-query(desk)
+    background-image: url(../img/nav-left.png), url(../img/nav-right.png)
+    background-position: left center, right center
+    background-repeat: no-repeat
+    padding: 0 17px
     width: auto
 
 .head-nav-list

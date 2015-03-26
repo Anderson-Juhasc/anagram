@@ -1,0 +1,57 @@
+<h1><a href="http://wickynilliams.github.com/enquire.js/">enquire.js</a> - Awesome Media Queries in JavaScript</h1>
+<p><a href="https://travis-ci.org/WickyNilliams/enquire.js"><img src="https://travis-ci.org/WickyNilliams/enquire.js.png" alt="Build Status"></a></p>
+<p><code>enquire.js</code> is a lightweight, pure javascript library (with <strong>no dependencies</strong>) for programmatically responding to media queries. </p>
+<h2>Getting enquire.js</h2>
+<h3>Download</h3>
+<p>Get the latest build, ready to go:</p>
+<ul>
+<li><a href="https://github.com/WickyNilliams/enquire.js/raw/master/dist/enquire.js">Development</a> - unminified</li>
+<li><a href="https://github.com/WickyNilliams/enquire.js/raw/master/dist/enquire.min.js">Production</a> - minified</li>
+</ul>
+<h3>Install via Bower</h3>
+<p>To install via the <a href="http://twitter.github.com/bower/">bower</a> package repository, enter the following at the command line:</p>
+<pre><code>bower install enquire</code></pre>
+<p>Easy as that :-)</p>
+<h3>Build From Source</h3>
+<p>If you want build from source (and run all unit tests etc):</p>
+<pre><code>git clone git://github.com/WickyNilliams/enquire.js.git
+cd enquire.js
+npm install
+grunt</code></pre>
+<p>Booya!</p>
+<h2>Quick Start</h2>
+<p>The main method you will be dealing with is <code>register</code>. It&#39;s basic signature is as follows:</p>
+<pre><code class="language-javascript">enquire.register(query /* string */, handler /* object || array  || function */);</code></pre>
+<p><code>query</code> is the CSS media query you wish to respond to, and <code>handler</code> is an object containing any logic to handle the query. An example of usage is as follows:</p>
+<pre><code class="language-javascript">enquire.register(&quot;screen and (max-width:1000px)&quot;, {
+
+    match : function() {},      // OPTIONAL
+                                // If supplied, triggered when the media query transitions 
+                                // *from an unmatched to a matched state*
+
+    unmatch : function() {},    // OPTIONAL
+                                // If supplied, triggered when the media query transitions 
+                                // *from a matched state to an unmatched state*.
+                                // Also may be called when handler is unregistered (if destroy is not available)
+
+    setup : function() {},      // OPTIONAL
+                                // If supplied, triggered once immediately upon registration of the handler
+
+    destroy : function() {},    // OPTIONAL
+                                // If supplied, triggered when handler is unregistered. Place cleanup code here
+
+    deferSetup : true           // OPTIONAL, defaults to false
+                                // If set to true, defers execution the setup function 
+                                // until the media query is first matched. still triggered just once
+});</code></pre>
+<p>This should be enough to get you going, but <strong>please read the full <a href="http://wickynilliams.github.com/enquire.js/">enquire.js documentation</a></strong> if you wish to learn about the other cool features.</p>
+<h2>Contributing</h2>
+<ul>
+<li>Got an awesome idea? </li>
+<li>Found a <em>not-so</em>-awesome bug? </li>
+<li>Wish to get my attention through an inappropriate communication channel?!</li>
+</ul>
+<p>Then please don&#39;t hesitate to raise an issue, they will <em>all</em> be looked at and tended to.</p>
+<p>And for all the cool cats who are prepared to give their time to contribute code, feel free to open a pull request. If you could write unit tests to accompany your pull request that would be pretty sweet, but no worries if not - if it&#39;s good enough to be merged in, it&#39;s good enough for me to spend a little time to write tests on your behalf :-)</p>
+<h2>License</h2>
+<p>License: MIT (<a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a>)</p>

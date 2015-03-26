@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- .head -->
-    <header class="head" data-0="background-position:0px 0px;" data-100000="background-position:0px -50000px;">
+    <header class="head">
         <!-- .wrapper -->
         <div class="wrapper">
             <!-- .head-logo -->
@@ -85,6 +85,8 @@
                 <!-- .about__scroller -->
                 <div class="about__scroller nano">
                     <div class="nano-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -424,7 +426,7 @@
     <!-- /.media -->
 
     <!-- .store -->
-    <div id="store" class="store" data-0="background-position:0px 0px;" data-100000="background-position:0px -50000px;">
+    <div id="store" class="store">
         <!-- .wrapper -->
         <div class="wrapper store__wrapper">
             <h3 class="store__title darkblue">Loja Virtual</h3>
@@ -532,7 +534,7 @@
     <!-- /.gallery -->
 
     <!-- .contact -->
-    <div id="contact" class="contact" data-0="background-position:0px 0px;" data-100000="background-position:0px -50000px;">
+    <div id="contact" class="contact">
         <!-- .contact__border -->
         <div class="contact__border">
             <!-- .wrapper -->
@@ -687,7 +689,6 @@
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/sly/dist/sly.min.js"></script>
-    <script src="bower_components/skrollr/dist/skrollr.min.js"></script>
     <script src="bower_components/enquire/dist/enquire.min.js"></script>
     <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
@@ -695,9 +696,6 @@
         // desktop
         enquire.register("screen and (min-width: 1024px)", {
             match : function() {
-                skrollr.init({
-                    forceHeight: false
-                });
             }
         });
 

@@ -2,8 +2,6 @@
   color: #fff
   padding: 64px 0
   text-align: center
-  +media-query(desk)
-    background: url(../img/head-bg.png)
 
 .head-logo
   display: inline-block
@@ -39,13 +37,13 @@
     background-image: url(../img/nav-left.png), url(../img/nav-right.png)
     background-position: left center, right center
     background-repeat: no-repeat
-    padding: 0 17px
+    padding: 0 17px 4px
     width: auto
 
 .head-nav-list
   +cf
   background: #1f6796
-  box-shadow: 0 3px 1px rgba(#000, .15)
+  box-shadow: 0 3px 1px rgba(#000, .5)
   list-style: none
   margin: 0
   > li
@@ -60,4 +58,4 @@
       font-size: 17px
       float: left
       > a
-        padding: 12px 18px
+        padding: 10px 18px

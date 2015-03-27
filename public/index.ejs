@@ -755,28 +755,28 @@
     autoCenter();
 
         $(document).ready(function() {
+            $('a[href^="#"]').on('click',function (e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 1500, 'swing');
+            });
+
             // desktop
             enquire.register("screen and (min-width: 1024px)", {
                 match : function() {
-                    $('a[href^="#"]').on('click',function (e) {
-                        e.preventDefault();
-
-                        var target = this.hash;
-                        var $target = $(target);
-
-                        $('html, body').stop().animate({
-                            'scrollTop': $target.offset().top
-                        }, 1500, 'swing');
-                    });
+                    //Balloons
+                    $('.balloons__minion').balloons();
+                    $('.balloons__mickey').balloons();
+                    $('.balloons__minnie').balloons();
+                    $('.balloons__batman').balloons();
+                    //$('.balloons__cinderella').balloons();
                 }
             });
-
-            //Balloons
-            $('.balloons__minion').balloons();
-            $('.balloons__mickey').balloons();
-            $('.balloons__minnie').balloons();
-            $('.balloons__batman').balloons();
-            $('.balloons__cinderella').balloons();
 
             $(".nano").nanoScroller();
 

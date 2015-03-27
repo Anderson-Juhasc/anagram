@@ -80,6 +80,9 @@
 
     <!-- .wrapper -->
     <div class="wrapper">
+        <div>
+            <img src="assets/img/balloon/minion.png" class="balloons__floating balloons__minion" alt="">
+        </div>
         <!-- .about -->
         <div id="about" class="about">
             <!-- .about__body -->
@@ -418,7 +421,9 @@
         <!-- /.wrapper -->
     </div>
     <!-- /.store -->
-
+    <div>
+        <img src="assets/img/balloon/cinderella.png" class="balloons__floating balloons__cinderella" alt="">
+    </div>
     <!-- .map -->
     <div id="map" class="map">
         <!-- .map__head -->
@@ -526,7 +531,10 @@
 
         <!-- .wrapper -->
         <div class="wrapper">
-
+            <div>
+                <img src="assets/img/balloon/minnie.png" class="balloons__floating balloons__minnie" alt="">
+                <img src="assets/img/balloon/mickey.png" class="balloons__floating balloons__mickey" alt="">
+            </div>
             <!-- .contact__grid -->
             <div class="contact__grid">
                 <!-- .contact__cell -->
@@ -586,6 +594,9 @@
 
     <!-- .foot -->
     <footer class="foot">
+        <div>
+            <img src="assets/img/balloon/batman.png" alt="" class="balloons__floating balloons__batman">
+        </div>
         <!-- .foot-top -->
         <div class="foot-top">
             <!-- .wrapper -->
@@ -668,8 +679,9 @@
     <script src="bower_components/sly/dist/sly.min.js"></script>
     <script src="bower_components/enquire/dist/enquire.min.js"></script>
     <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js"></script>
+    <script src="bower_components/jarallax/jarallax.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-
+    <script src="assets/js/balloons.js"></script>
     <script>
 
         // Define your locations: HTML content for the info window, latitude, longitude
@@ -743,19 +755,26 @@
     autoCenter();
 
         $(document).ready(function() {
+            $('a[href^="#"]').on('click',function (e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 1500, 'swing');
+            });
+
             // desktop
             enquire.register("screen and (min-width: 1024px)", {
                 match : function() {
-                    $('a[href^="#"]').on('click',function (e) {
-                        e.preventDefault();
-
-                        var target = this.hash;
-                        var $target = $(target);
-
-                        $('html, body').stop().animate({
-                            'scrollTop': $target.offset().top
-                        }, 1500, 'swing');
-                    });
+                    //Balloons
+                    $('.balloons__minion').balloons();
+                    $('.balloons__mickey').balloons();
+                    $('.balloons__minnie').balloons();
+                    $('.balloons__batman').balloons();
+                    //$('.balloons__cinderella').balloons();
                 }
             });
 

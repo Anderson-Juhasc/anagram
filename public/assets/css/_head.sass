@@ -30,15 +30,44 @@
   margin-bottom: 54px
 
 .head-nav
+  -webkit-transform: rotate(.1deg);
+  -moz-transform: rotate(.1deg);
+  -o-transform: rotate(.1deg);
+  -ms-transform: rotate(.1deg);
+  transform: rotate(.1deg);
   display: inline-block
+  position: relative
   text-align: left
   width: 70%
   +media-query(desk)
-    background-image: url(../img/nav-left.png), url(../img/nav-right.png)
-    background-position: left center, right center
-    background-repeat: no-repeat
-    padding: 0 17px 4px
+    padding: 0 17px
     width: auto
+
+.head-nav__left
+  background-image: url(../img/nav-left.png)
+  background-repeat: no-repeat
+  background-position: left center
+  display: none
+  height: 48px
+  position: absolute
+  left: 0
+  top: 0
+  width: 17px
+  +media-query(desk)
+    display: block
+
+.head-nav__right
+  background-image: url(../img/nav-right.png)
+  background-repeat: no-repeat
+  background-position: right center
+  display: none
+  height: 48px
+  position: absolute
+  right: 0
+  top: 0
+  width: 17px
+  +media-query(desk)
+    display: block
 
 .head-nav-list
   +cf

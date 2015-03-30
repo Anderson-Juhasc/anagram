@@ -18,12 +18,18 @@
     width: 40%
 
 .balloons__body
+  position: relative
   +media-query(desk)
     display: inline-block
     margin-right: -0.28em
     padding-left: 24px
     vertical-align: middle
     width: 60%
+
+.balloons__balloon
+  position: absolute
+  right: -5px
+  top: 25px
 
 .balloons__title
   font-size: 35px

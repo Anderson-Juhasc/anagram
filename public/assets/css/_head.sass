@@ -30,18 +30,62 @@
   margin-bottom: 54px
 
 .head-nav
-  -webkit-transform: rotate(.1deg);
-  -moz-transform: rotate(.1deg);
-  -o-transform: rotate(.1deg);
-  -ms-transform: rotate(.1deg);
-  transform: rotate(.1deg);
   display: inline-block
   position: relative
   text-align: left
   width: 70%
   +media-query(desk)
+    -webkit-transform: rotate(.1deg)
+    -moz-transform: rotate(.1deg)
+    -o-transform: rotate(.1deg)
+    -ms-transform: rotate(.1deg)
+    transform: rotate(.1deg)
     padding: 0 17px
     width: auto
+
+.head-nav--fixed
+  -webkit-transform: rotate(0)
+  -moz-transform: rotate(0)
+  -o-transform: rotate(0)
+  -ms-transform: rotate(0)
+  transform: rotate(0)
+  padding: 0
+  position: fixed
+  left: 0
+  top: 0
+  text-align: center
+  width: 100%
+  z-index: 9999
+  .head-nav__left,
+  .head-nav__right
+    background: none
+  .head-nav-list
+    line-height: 1
+    padding: 24px 0
+    > li
+      border-right: 1px solid #fff
+      margin-right: -0.28em
+      margin-top: 10px
+      vertical-align: middle
+      &:first-child
+        > a
+          padding-left: 0
+      &:last-child
+        border-right: none
+        > a
+          padding-right: 0
+      &.head-nav--fixed-logo
+        display: inline-block !important
+        margin-top: 0 !important
+      > a
+        padding: 0 14px
+
+.head-nav--fixed-logo
+  border-right: none !important
+  display: none !important
+  > a
+    > img
+      display: block
 
 .head-nav__left
   background-image: url(../img/nav-left.png)
@@ -86,7 +130,7 @@
         color: #fff
   +media-query(desk)
     > li
+      display: inline-block
       font-size: 17px
-      float: left
       > a
         padding: 10px 18px

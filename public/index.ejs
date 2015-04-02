@@ -158,13 +158,13 @@
                 <!-- .balloons__btns -->
                 <ul class="balloons__btns">
                     <li>
-                        <a href="" class="btn btn--blue">Balões</a>
+                        <a href="#baloes" class="btn btn--blue">Balões</a>
                     </li>
                     <li>
-                        <a href="" class="btn btn--pink">Video de Instrução</a>
+                        <a href="#instrucao" class="btn btn--pink">Video de Instrução</a>
                     </li>
                     <li>
-                        <a href="" class="btn btn--pink">Gás Hélio</a>
+                        <a href="#helio" class="btn btn--pink">Gás Hélio</a>
                     </li>
                 </ul>
                 <!-- /.balloons__btns -->
@@ -868,7 +868,7 @@
     autoCenter();
 
         $(document).ready(function() {
-            $('a[href^="#"]').on('click',function (e) {
+            $('.head a[href^="#"]').on('click',function (e) {
                 e.preventDefault();
 
                 var target = this.hash;

@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- .head -->
-    <header class="head">
+    <header id="head" class="head">
         <!-- .wrapper -->
         <div class="wrapper">
             <!-- .head-logo -->
@@ -45,7 +45,7 @@
                 <!-- .head-nav-list -->
                 <ul class="head-nav-list">
                     <li class="head-nav--fixed-logo">
-                        <a href="#">
+                        <a href="#head">
                             <img src="assets/img/anagram-fixed.png" alt="Anagram" />
                         </a>
                     </li>
@@ -154,6 +154,20 @@
                     </div>
                 </div>
                 <!-- /.balloons__scroller -->
+
+                <!-- .balloons__btns -->
+                <ul class="balloons__btns">
+                    <li>
+                        <a href="#baloes" class="btn btn--blue">Balões</a>
+                    </li>
+                    <li>
+                        <a href="#instrucao" class="btn btn--pink">Video de Instrução</a>
+                    </li>
+                    <li>
+                        <a href="#helio" class="btn btn--pink">Gás Hélio</a>
+                    </li>
+                </ul>
+                <!-- /.balloons__btns -->
             </div>
             <!-- /.balloons__body -->
         </div>
@@ -223,7 +237,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
+                        <a href="#store" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -250,7 +264,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
+                        <a href="#store" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -295,7 +309,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
+                        <a href="#store" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -322,7 +336,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
+                        <a href="#store" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -388,7 +402,7 @@
                             </li>
                         </ul>
 
-                        <a href="" class="products-item__more btn btn--white">Ver todos</a>
+                        <a href="#store" class="products-item__more btn btn--white">Ver todos</a>
                     </div>
                     <!-- /.products-item -->
                 </div>
@@ -407,27 +421,27 @@
 
             <div id="media-sly" class="media-sly">
                 <ul class="media-sly-nav cf">
-                    <li>
+                    <li style="width: 137px;">
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/disney.png" alt=""/>
+                            <img src="assets/img/media/avengers.png" alt=""/>
                         </a>
                     </li>
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/pixar.png" alt=""/>
+                            <img src="assets/img/media/cars.png" alt=""/>
                         </a>
                     </li>
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/lego.png" alt=""/>
+                            <img src="assets/img/media/fairies.png" alt=""/>
                         </a>
                     </li>
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/peppapig.png" alt=""/>
+                            <img src="assets/img/media/fronze.png" alt=""/>
                         </a>
                     </li>
 
@@ -439,31 +453,49 @@
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/wb.png" alt=""/>
+                            <img src="assets/img/media/peppa.png" alt=""/>
                         </a>
                     </li>
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/hasbro.png" alt=""/>
+                            <img src="assets/img/media/mickey.png" alt=""/>
                         </a>
                     </li>
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/winnie.png" alt=""/>
+                            <img src="assets/img/media/monsters-high.png" alt=""/>
                         </a>
                     </li>
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/disney.png" alt=""/>
+                            <img src="assets/img/media/toy-story.png" alt=""/>
                         </a>
                     </li>
 
                     <li>
                         <a class="media-sly-nav__item" href="" title="">
-                            <img src="assets/img/media/disney.png" alt=""/>
+                            <img src="assets/img/media/minnie.png" alt=""/>
+                        </a>
+                    </li>
+
+                    <li style="width: 130px;">
+                        <a class="media-sly-nav__item" href="" title="">
+                            <img src="assets/img/media/spider-man.png" alt=""/>
+                        </a>
+                    </li>
+
+                    <li style="width: 112px;">
+                        <a class="media-sly-nav__item" href="" title="">
+                            <img src="assets/img/media/princesas.png" alt=""/>
+                        </a>
+                    </li>
+
+                    <li style="width: 138px;">
+                        <a class="media-sly-nav__item" href="" title="">
+                            <img src="assets/img/media/batman.png" alt=""/>
                         </a>
                     </li>
                 </ul>
@@ -760,10 +792,9 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/sly/dist/sly.min.js"></script>
     <script src="bower_components/enquire/dist/enquire.min.js"></script>
+    <script src="bower_components/remodal/dist/jquery.remodal.min.js"></script>
     <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js"></script>
-    <script src="bower_components/jarallax/jarallax.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-    <script src="assets/js/balloons.js"></script>
     <script>
 
         // Define your locations: HTML content for the info window, latitude, longitude
@@ -837,23 +868,23 @@
     autoCenter();
 
         $(document).ready(function() {
-            $('a[href^="#"]').on('click',function (e) {
+            $('.head a[href^="#"]').on('click',function (e) {
                 e.preventDefault();
 
                 var target = this.hash;
                 var $target = $(target);
 
                 $('html, body').stop().animate({
-                    'scrollTop': $target.offset().top
+                    'scrollTop': ($target.offset().top - 60)
                 }, 1500, 'swing');
             });
 
             // desktop
             enquire.register("screen and (max-width: 1023px)", {
                 match : function() {
-                    var headNav = $('.head-nav');
+                    var head = $('.head');
 
-                    headNav.removeClass("head-nav--fixed");
+                    head.removeClass("head--fixed");
 
                     $(window).off("scroll");
                 }
@@ -862,14 +893,14 @@
             // desktop
             enquire.register("screen and (min-width: 1024px)", {
                 match : function() {
-                    var headHeight = $(".head").height();
-                    var headNav = $('.head-nav');
+                    var head = $('.head');
+                    var headHeight = head.height();
 
                     $(window).on("scroll", function () {
                         if ($(this).scrollTop() > headHeight) {
-                            headNav.addClass("head-nav--fixed");
+                            head.addClass("head--fixed");
                         } else {
-                            headNav.removeClass("head-nav--fixed");
+                            head.removeClass("head--fixed");
                         }
                     });
                 }

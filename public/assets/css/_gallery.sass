@@ -28,15 +28,19 @@
   font-size: 28px
 
 .gallery-item__img
-  background: url(../img/gallery-01.jpg)
-  background-size: cover
   display: none
   height: 285px
   width: 100%
   +media-query(desk)
+    border-bottom: 8px solid #fff
     display: block
     float: left
+    overflow: hidden
+    padding-left: 6px
     width: 35%
+    > img
+      max-width: 100%
+      width: 100%
 
 .gallery-item-alt
   +cf
@@ -50,15 +54,20 @@
     float: left
     width: 65%
 
+.gallery-item-alt__img-2
+  +media-query(desk)
+    max-width: 100%
+    width: 100%
+
 .gallery-item-alt__body
-  background: url(../img/gallery-03.jpg) no-repeat center 12px
   font-size: 18px
-  padding: 216px 12px 18px
+  padding: 12px 0
   text-align: center
   p
     margin-bottom: 12px
   +media-query(desk)
     float: left
+    padding: 0 0 0 6px
     width: 35%
 
 .gallery-item-alt__title

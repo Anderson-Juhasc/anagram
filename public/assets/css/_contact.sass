@@ -98,13 +98,18 @@
   margin-left: 0
 
 .contact-aside-img
+  display: inline-block
   margin-left: 24px
   +media-query(lap)
     margin: 0
     position: absolute
     right: 24px
-    top: 48px
+    top: 24px
   +media-query(desk)
     top: auto
     bottom: 24px
     right: 60px
+
+.contact-aside-img__body
+  font-size: 12px
+  text-align: center

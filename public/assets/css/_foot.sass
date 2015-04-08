@@ -49,15 +49,24 @@
     margin-right: -0.28em
     padding-left: 24px
     vertical-align: middle
-    width: 50%
+    width: 100%
 
 .foot-bot__cell--copy
   font-size: 13px
   margin-bottom: 24px
   +media-query(desk)
     margin-bottom: 0
-    text-align: left
 
-.foot-bot__cell--logo
-  +media-query(desk)
-    text-align: right
+.foot-bot-logo
+  display: inline-block
+  padding-top: 24px
+
+.foot-bot-logo__anagram
+  margin-right: 8px
+  +media-query(lap)
+    margin-right: 16px
+
+.foot-bot-logo__regina
+  margin-left: 8px
+  +media-query(lap)
+    margin-left: 16px

@@ -17,7 +17,7 @@
             <div class="wrapper">
                 <!-- .head-portable-logo -->
                 <a href="#head" class="head-portable-logo">
-                    <img src="assets/img/anagram-fixed.png" alt="Anagram" />
+                    <img src="assets/img/anagram-mobile.png" alt="Anagram" />
                 </a>
                 <!-- /.head-portable-logo -->
 
@@ -115,7 +115,7 @@
 
                 <!-- .head-nav-list -->
                 <ul class="head-nav-list">
-                    <li class="head-nav--fixed-logo">
+                    <li class="head-nav--fixed-anagram">
                         <a href="#head">
                             <img src="assets/img/anagram-fixed.png" alt="Anagram" />
                         </a>
@@ -138,8 +138,13 @@
                     <li>
                         <a href="#inspired">Inspire-se</a>
                     </li>
-                    <li>
+                    <li class="head-nav--fixed-contact">
                         <a href="#contact">Contato</a>
+                    </li>
+                    <li class="head-nav--fixed-regina">
+                        <a href="#head">
+                            <img src="assets/img/regina-fixed.png" alt="Regina" />
+                        </a>
                     </li>
                 </ul>
                 <!-- /.head-nav-list -->
@@ -229,9 +234,6 @@
 
                 <!-- .balloons__btns -->
                 <ul class="balloons__btns">
-                    <li>
-                        <a href="#baloes" class="btn btn--blue">Balões</a>
-                    </li>
                     <li>
                         <a href="#instrucao" class="btn btn--pink">Video de Instrução</a>
                     </li>
@@ -589,7 +591,7 @@
         <div class="wrapper store__wrapper">
             <h3 class="store__title darkblue">Loja Virtual</h3>
             <p class="store__text georgia">
-                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor<br /> incididunt ut labore et dolore magna aliqua.</em>
+                <em>De super-heróis a princesas. Mensagens a formatos diversos. Compre online os encantadores<br /> balões metalizados e deixe o momento ainda mais divertido.</em>
             </p>
             <div class="store__img">
                 <img src="assets/img/store-img.png" alt="" />
@@ -749,7 +751,7 @@
                     <h4 class="contact__subtitle">Serviços de atendimento</h4>
                     <ul class="contact__list">
                         <li>
-                            <strong>Email:</strong> <a href="">contato@baloesanagram.com.br</a>
+                            <strong>Email:</strong> <a href="">sac@reginafestas.com.br</a>
                         </li>
                         <li>
                             <strong>SAC:</strong> (18) 3229-5056
@@ -763,7 +765,17 @@
                         </li>
                     </ul>
 
-                    <img src="assets/img/spider-man.jpg" alt="" class="contact-aside-img" />
+                    <!-- .contact-aside-img -->
+                    <div class="contact-aside-img">
+                        <img src="assets/img/spider-man.jpg" alt="" class="contact-aside-img__pic" />
+
+                        <div class="contact-aside-img__body">
+                            23483-01 - Spider-Man Airwalkers
+                            <br />
+                            P93 36"/91cm w x 36"/91cm h
+                        </div>
+                    </div>
+                    <!-- /.contact-aside-img -->
                 </div>
                 <!-- /.contact__cell -->
             </div>
@@ -843,7 +855,8 @@
                     <!-- .foot-bot__cell -->
                     <div class="foot-bot__cell foot-bot__cell--logo">
                         <a href="" class="foot-bot-logo">
-                            <img src="assets/img/anagram-foot.png" alt="" />
+                            <img src="assets/img/logo-anagram.png" class="foot-bot-logo__anagram" alt="" />
+                            <img src="assets/img/logo-regina.png" class="foot-bot-logo__regina" alt="" />
                         </a>
                     </div>
                     <!-- /.foot-bot__cell -->
@@ -863,6 +876,20 @@
         <div class="balloon balloon4"></div>
         <div class="balloon balloon5"></div>
     </div>
+
+    <!-- .remodal -->
+    <div class="remodal" data-remodal-id="instrucao">
+        <h3>Video de Instrução</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/29MxMsn4Bh8" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <!-- /.remodal -->
+
+    <!-- .remodal -->
+    <div class="remodal" data-remodal-id="helio">
+        <h3>Gás Hélio</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/UE3d7Aor_9Q" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <!-- /.remodal -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/sly/dist/sly.min.js"></script>

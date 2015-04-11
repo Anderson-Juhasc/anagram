@@ -6,16 +6,15 @@
     padding: 64px 0
 
 .head-logo
-  display: inline-block
+  list-style: none
+  margin-left: 0
   margin-bottom: 90px
-
-.head-logo__anagram
-  +media-query(lap)
-    margin-right: 16px
-
-.head-logo__regina
-  +media-query(lap)
-    margin-left: 16px
+  > li
+    display: inline-block
+    margin: 0 12px
+    vertical-align: baseline
+    > a
+      display: block
 
 .head-title
   > br

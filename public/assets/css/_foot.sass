@@ -59,15 +59,16 @@
     margin-bottom: 0
 
 .foot-bot-logo
-  display: inline-block
+  list-style: none
+  margin-left: 0
   padding-top: 24px
-
-.foot-bot-logo__anagram
-  margin-right: 8px
-  +media-query(lap)
-    margin-right: 16px
-
-.foot-bot-logo__regina
-  margin-left: 8px
-  +media-query(lap)
-    margin-left: 16px
+  > li
+    display: inline-block
+    margin: 0 12px
+    vertical-align: baseline
+    &:first-child
+      margin-left: 0
+    &:last-child
+      margin-right: 0
+    > a
+      display: block

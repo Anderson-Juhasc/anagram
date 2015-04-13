@@ -15,6 +15,9 @@
     vertical-align: baseline
     > a
       display: block
+  +media-query(desk)
+    > li
+      margin: 0 24px
 
 .head-title
   > br
@@ -66,11 +69,11 @@
       background: none
     .head-nav-list
       line-height: 1
-      padding: 24px 0
+      padding: 12px 0
       > li
         border-right: 1px solid #fff
         margin-right: -0.28em
-        margin-top: 10px
+        margin-top: 6px
         vertical-align: middle
         &:first-child
           > a

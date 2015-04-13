@@ -137,7 +137,7 @@ body.remodal-is-active .remodal-overlay {
     box-sizing: border-box;
     width: 100%;
     min-height: 100%;
-    padding: 35px;
+    padding: 24px 24px 18px;
 
     -webkit-transition: -webkit-transform 0.2s ease-out, opacity 0.2s ease-out;
     -moz-transition: -moz-transform 0.2s ease-out, opacity 0.2s ease-out;
@@ -151,7 +151,7 @@ body.remodal-is-active .remodal-overlay {
 
     opacity: 0;
     color: #182a3c;
-    background: #f4f4f4;
+    background: #fff;
     background-clip: padding-box;
 }
 
@@ -176,11 +176,10 @@ body.remodal-is-active .remodal {
 
 .remodal-close {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: -10px;
+    right: -10px;
 
     width: 28px;
-    height: 28px;
 
     -webkit-transition: background 0.2s ease-out;
     -moz-transition: background 0.2s ease-out;
@@ -190,35 +189,25 @@ body.remodal-is-active .remodal {
 
     -webkit-border-radius: 50%;
     border-radius: 50%;
-}
 
-.remodal-close:after {
+    background: #3e5368;
+    color: #f4f4f4;
     font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
     font-size: 28px;
     line-height: 28px;
 
-    display: block;
+    &:hover {
+        background: darken(#3e5368, 6%);
+    }
 
-    content: "×";
-    cursor: pointer;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-    text-decoration: none;
-
-    color: #3e5368;
+    &:after {
+        content: "×";
+    }
 }
 
-.remodal-close:hover,
-.remodal-close:active {
-    background: #3e5368;
+.remodal-close:after {
 }
 
-.remodal-close:hover.remodal-close:after,
-.remodal-close:active.remodal-close:after {
-    color: #f4f4f4;
-}
 
 /* Dialog buttons */
 
@@ -240,8 +229,6 @@ body.remodal-is-active .remodal {
     text-align: center;
     text-decoration: none;
 
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     background-clip: padding-box;
 }
 
@@ -277,8 +264,5 @@ body.remodal-is-active .remodal {
         max-width: 700px;
         min-height: 0;
         margin: 20px auto;
-
-        -webkit-border-radius: 6px;
-        border-radius: 6px;
     }
 }
